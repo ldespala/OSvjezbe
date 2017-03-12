@@ -1,0 +1,108 @@
+\section*{Procesi}
+\subsection*{Proces}
+Proces je program u izvršavanju zajedno sa svojim virtualnim adresnim prostorom. Svaki proces ima pridružene i sljedeće vrijednosti:
+\begin{itemize}
+ \item ID procesa (PID)
+ \item ID roditelja (PPID)
+ \item ID korisnika i grupe
+ \item environment varijable
+ \item listu otvorenih datoteka
+ \item tekući direktorij
+ \item itd.
+\end{itemize}
+\subsection*{Pokretanje procesa}
+Svaki proces je pokrenut od strane nekog drugog procesa. Jedini izuzetak je \textbf{init} proces koji pokreće kernel i ima PID 1. Sam \texttt{shell} je proces i njegov \texttt{PID} se može dobiti sa: \texttt{echo \$\$}
+
+Iz shella se procesi pokreću izvršavanjem komandne linije. Npr. u komandnoj liniji napišite \texttt{bash}. Otvoriti će se subshell. 
+
+\begin{zadatak} Izvršite sljedeće akcije:
+\begin{itemize} 
+ \item Naći \texttt{PID} tekućeg shella. Izvršiti naredbu \texttt{history}.
+ \item Pokrenite novi \texttt{bash} shell
+ \item Naći PID novootvorenog subshella. Izvršiti naredbu \texttt{history}. Što zaključujete?
+ \item Izaći iz novootvorenog shella naredbom \texttt{exit}. Provjeriti \texttt{PID} shella u kojem se nalazite. 
+\end{itemize}
+  
+\end{zadatak}
+\begin{center} 
+\includegraphics[scale=0.5]{fork.png}%
+\end{center}
+
+Procesi se mogu izvršavati na dva načina:
+\begin{itemize}
+ \item \textbf{foreground} procesi 
+ \item \textbf{background} procesi
+\end{itemize}
+Kada se proces izvršava kao foreground proces, shell koji je pokrenuo proces treba čekati da proces završi kako bi se mogli pokretati 
+ostali procesi. S druge strane, kada se proces izvršava kao background proces, shell ne mora čekati završetak procesa (odzivni znak se 
+odmah pojavi u shellu). Background procesi se pokreću tako da se na kraj komandne linije doda znak ampersand (\texttt{\&}).
+
+Prebacivanje foreground u background:
+\begin{enumerate}
+ \item Suspendirati proces (Ctrl+z)
+ \item Unijeti naredbu \texttt{bg}
+\end{enumerate}
+
+\begin{zadatak}
+Pokreniti \texttt{gedit} kao foreground proces i prebaciti ga u background.                                                                                             
+\end{zadatak}
+\begin{zadatak}Pokrenuti naredbu \texttt{jobs} kojom se ispisuju svi background ili suspendirani procesi.
+\end{zadatak}
+
+
+\subsection*{Nadgledanje procesa}
+\begin{itemize}
+ \item \texttt{ps} - ispisuje sve procese (process status). Neke opcije: 
+\begin{itemize}
+ \item \textbf{a} - svi procesi povezani sa terminalom
+ \item \textbf{x} - svi ostali procesi
+ \item \textbf{u} - detaljniji ispis
+ \item \textbf{-e} - svi procesi
+ \item \textbf{-f} - full format
+ \item \textbf{-l} - kompletan ispis
+\end{itemize}
+Najčešći oblik korištenja \textbf{ps} naredbe je \texttt{ps aux} ili \texttt{ps -ef}
+
+ \item \texttt{lsof} - ispisuje listu otvorenih datoteka za pojedini proces
+\item \texttt{pstree} - ispisuje procese u obliku stabla 
+\item \texttt{pidof} - ispisuje PID procesa
+\item \texttt{top} - ispisuje trenutno pokrenute procese i informacije o memoriji i CPU.
+\end{itemize}
+
+\begin{zadatak} Pokrenite neki program (npr. unijeti \texttt{gedit test.txt}). Nađite PID i PPID procesa.
+\end{zadatak}
+
+\subsection*{Završetak procesa}
+Procesi završavaju zbog dva razloga:
+\begin{itemize}
+ \item proces sam završava, automatski ili zbog korisničke intervencije
+ \item drugi proces šalje signal procesu i tako ga terminira (npr. naredbom \texttt{kill})
+\end{itemize}
+
+\paragraph{Kill signal}
+Najvažniji signali:
+\begin{center}
+\begin{tabularx}{0.7\textwidth}{lllX}
+ \hline Signal & Kratica & Značenje & Akcija\\
+ \hline 02 & Ctrl+c & interrupt & end process\\
+ 09 && kill & end process (nepovratno)\\
+15&& terminate & end process\\
+\hline
+\end{tabularx}
+\end{center}
+
+Sintaksa je \texttt{kill -SIGKILL PID}.
+Predefinirani signal je 15. 
+
+\begin{zadatak} Ubijte \texttt{gedit} iz komandne linije.
+\end{zadatak}
+
+\begin{comment}
+
+\vfill
+\begin{itemize}
+\renewcommand{\labelitemi}{\textbf{$\rightarrow$}}
+\item Popis svih pokrenutih naredbi eksportirajte u datoteku imena \texttt{prezime\_ime\_vj10.txt}. Uploadajte datoteku na \href{https://moodle.oss.unist.hr/course/view.php?id=133}{http://moodle.oss.unist.hr}.
+\end{itemize}
+
+\end{comment}

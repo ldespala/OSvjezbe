@@ -1,0 +1,148 @@
+
+\section{Command line interface (CLI)}
+Command line interface (CLI) je naziv za programe koji omogućuju unošenje naredbi u tekstualnom obliku koje potom izvršava \textit{Command line interpreter} ili ljuska (engl.~\textit{shell}). \textit{Shell} je sučelje između korisnika i operativnog sustava. Na Linux operativnim sustavima dostupno je nekoliko \textit{shellova}, aktivni možemo detektirati naredbom \lstinline!echo $SHELL!.
+
+\textit{Shell} je program koji interpretira naredbeni redak, parsira ga i pokreće procese navedene u njemu. Naredbeni redak ima odzivni znak (za \texttt{bash} je to znak \lstinline!$! u korisničkom modu rada, a \lstinline!#! u \textit{root} modu). Parsiranje se vrši tako da se podijeli redak u riječi (engl.~\textit{words}) na sljedeći način:
+\begin{itemize}
+ \item svako pojavljivanje navodnika označava tekst koji slijedi do sljedećeg navodnika kao jednu riječ
+ \item svako pojavljivanje praznine označava kraj riječi
+ \item naredbena linija završava novim redom ili znakovima \lstinline!;, &, |!.
+\end{itemize}
+Svaka riječ u naredbenom retku je pridružena nizu stringova. Prva riječ ima indeks 0 u nizu, druga 1 itd.
+
+Na Linux OS možemo koristiti programe \texttt{Konsole} ili \texttt{xterm} kao CLI  ili instalirati neki drugi CLI (\texttt{yakuake, guake, terminator, eterm} itd.). Uobičajeno naziv za te programe je konzola ili terminal.
+
+Kod korisštenja terminala važan nam je podatak u kojem dijelu datotečnog sustava se nalazimo. Inicijalno je to \textit{home} direktorij (u našem slučaju \texttt{/home/student}). Kratica za \textit{home} direktorij je \lstinline!~!.
+
+\begin{primjer}
+Pozicioniranje u \textit{home} direktorij
+\begin{itemize}
+\item \lstinline!ls ~! 
+\item \lstinline!ls /home/student! 
+\end{itemize}
+\end{primjer}
+
+Osim \textit{home} direktorija, bitan direktorij je \textit{root} direktorij. Oznaka za njega je \lstinline!/!.
+\begin{primjer}
+Pozicioniranje u \textit{root} direktorij
+\begin{itemize}
+ \item \lstinline!cd /!
+\end{itemize}
+
+\end{primjer}
+
+
+\section{Naredbe Linux operativnog sustava}
+Opći oblik naredbi u Linux operativnim sustavima je
+\begin{prototip}
+$ command [option(s)][argument(s)]
+\end{prototip}
+Moguće opcije i argumente te njihov opis mogu se dobiti naredbom \lstinline!man!.
+\begin{prototip}
+man command 
+\end{prototip}
+
+
+\subsection*{Opće naredbe}
+\begin{zadatak}
+Izvršiti sljedeće naredbe u komandnoj liniji.
+\begin{itemize}
+% \item Promjenite password. Novi password: os123. Naredba \textbf{\texttt{passwd}}.
+\item Ispisati datum. Naredba \textbf{\texttt{date}}.
+\item Proučiti opcije naredbe \textbf{\texttt{cal}} koristeći naredbe \textbf{\texttt{man}} i \textbf{\texttt{info}}.
+\item Ispisati kalendar za 2020. Ispisati kalendar za drugi mjesec 2020. Ispisati kalendar za 1., 2.~i 3.~mjesec 2020.~koristeći naredbu \textbf{\texttt{cal}}.
+\item Obrisati sadržaj ekrana koristeći naredbu \textbf{\texttt{clear}}.
+\item Ispisati poruku koristeći naredbu \textbf{\texttt{echo}}. Npr.~\texttt{echo Hello world}.
+\item Ispisati \textit{fortune cookie}. Naredba \texttt{fortune}. Ako program \lstinline!fortune! nije instaliran, instalirati ga koristeći \lstinline!sudo apt-get install fortune!. 
+\end{itemize}
+\end{zadatak}
+\subsection*{Korištenje naredbe \texttt{history}}
+\begin{zadatak}
+Izvršiti sljedeće naredbe u komandnoj liniji.
+\begin{itemize}
+\item \texttt{history}
+\item \texttt{history 10}
+\item \texttt{!10}
+\item ponovno pokretanje naredbe iz historyja sa modifikacijom: \texttt{!echo:s/world/you}
+\item pretraga history-ja: <Ctrl-R>\texttt{ech}
+\end{itemize}
+\end{zadatak}
+\subsection*{Tips and tricks}
+\begin{zadatak}
+Izvršiti sljedeće naredbe u komandnoj liniji.
+\begin{itemize}
+ \item Pomoću strelice gore i strelice dolje možemo pristupiti već izvršenim naredbama. Isprobati!
+\item Za pregled prethodnih naredbi i rezultata koristiti shift+page-up, shift+page-down.
+\item Naredbe i putanje se mogu dovršiti korištenjem tipke \texttt{<TAB>}. Isprobajte: \texttt{his<TAB>}
+\item Selektirajte neku od predhodno napisanih naredbi i kopirajte je koristeći srednji botun miša ili istovremeno oba botuna na touchpadu. Selekcija - \textit{copy}, srednji botun - \textit{paste}.
+\end{itemize}
+\end{zadatak}
+%\newpage
+\subsection*{Izvršavanje naredbi kao \texttt{root}}
+\begin{itemize}
+ \item Dva načina za izvršavanje naredbi kao \texttt{root}: \begin{itemize}
+\item \textbf{\texttt{su root}} ili \textbf{\texttt{sudo su}}, password je isti (\texttt{student123}).
+\item \textbf{\texttt{sudo naredba}} 
+ \end{itemize}
+\item Uočite drugačiji komandni prompt.
+\item Izađite sa \textbf{\texttt{exit}}.
+\end{itemize}
+\section{Korištenje repozitorija}
+Svaka distribucija Linuxa dolazi sa svojim \textbf{repozitorijem} tj.~kolekcijom programa kompajliranih za tu distribuciju i verziju Linuxa. Repozitorij se nalazi na serveru, a lokalno je pohranjen popis dostupnih programa. Osim glavnog repozitorija, korisnik može dodati i druge repozitorije. Programi u repozitoriju dostupni su u obliku \textbf{paketa} (engl.~\textit{package}). Lokalno, na računalima, je pohranjena lista dostupnih paketa. Listu dostupnih paketa osvježavamo naredbom \lstinline!apt-get update! pokrenutom kao \textit{root}. 
+
+Za rad sa softverskim paketima (pretraga i instaliranje) može se koristiti GUI aplikacija ili se može koristiti naredbena linija. Programi za baratanje paketima zovemo \textit{Package Managerima}. Za Ubuntu, Mint, Debian i osatle distribucije izvedene iz Debian distribucije GUI programi su \textit{synaptic}, \texttt{Software Centar} ili \texttt{Software Manager} te \texttt{Update Manager}. Program za rad iz naredbenog retka je APT (Advanced Package Tool).
+
+Osnovne \texttt{apt} naredbe:
+\begin{itemize}
+ \item \lstinline!apt-get update! - osvježava listu dostupnih paketa (pokrenuti kao \textit{root})
+ \item \lstinline!apt-cache search name! - pretraga repozitorija, vraća sve pakete koji u svom imenu ili opisu imaju riječ \textit{name}
+ \item \lstinline!apt-get install paket! - instalacija \textit{paketa} na računalo (pokrenuti kao \textit{root}).
+\end{itemize}
+
+
+\subsection*{Instaliranje programa (Ubuntu, Mint i ostale Debian distribucije)}
+\begin{zadatak}
+Izvršiti sljedeće naredbe u komandnoj liniji.
+\begin{itemize}
+ \item Pokreniti program synaptic (kao \texttt{root}) i instalirajte program code::blocks ili neki drugi C IDE. Zatvorite synaptic.
+\item Koristeći naredbu \textbf{\texttt{apt-get}} napravite update repozitorija (\texttt{sudo apt-get update}), a zatim instalirajte neki program (npr.~\texttt{sudo apt-get install fslint}).
+\item Pronaći u repozitoriju programe za pisanje nota \texttt{apt-cache search "music score"} i instalirajte ga.
+\end{itemize}
+\end{zadatak}
+
+\section{Kompajliranje programa za Linux platformu}
+Programi za Linux OS u najvećoj mjeri su pisani u programskim jezicima C/C++, Python, Perl i Java. Među njima, programi napisani u C/C++ se kompajliraju te ih je uglavnom moguće preuzeti u obliku izvornog k\^oda, te samostalno kompajlirati. Sa većinom distribucija Linux dolazi i C/C++ kompajler GNU GCC (GNU Compiler Collection) no ako već nije instaliran može se instalirati zajedno sa ostalim potrebnim alatima i bibliotekama koristeći (za distribucije izvedene iz Debiana) \texttt{sudo apt-get install build-essential}. To je ustvari kolekcija alata za C, C++, Objective-C, Fortran, Ada i Go jezike uključujući i biblioteke za te jezike. GNU GCC izdan je pod GNU licencom slobodnog softvera.
+
+\subsection*{C kompajler}
+\begin{zadatak}
+Kompajlirati jednostavan C program. 
+\begin{itemize}
+ \item Kreirati datoteku \texttt{hello.c} koristeći naredbu \textbf{\texttt{touch}}.
+ \item Otvoriti datoteku programom \texttt{gedit}, \texttt{kate}, \texttt{nano}, \texttt{codeblocks} ili nekim editorom.
+ \item Napisati neki jednostavan C program (npr.~program koji ispisuje poruku "Hello world!").
+\item Iskompajlirati program: \texttt{gcc hello.c -o hello}. Opcija \lstinline!-o ime! daje ime izvršnoj datoteci. Ako te opcije nema, izvršna datoteka zvat će se \lstinline!a.out! 
+\begin{itemize}
+\item Ako nedostaje standardna biblioteka instalirajte je \texttt{sudo apt-get install libc6-dev}.
+\item Ako nedostaje kompajler možete ga instalirati zajedno  sa pripadajućim paketima \texttt{sudo apt-get install build-essential}.                                                                                                                                                                                                                                                                                    \end{itemize}
+\item Pokreniti izvršnu datoteku: \texttt{./hello}
+\end{itemize}
+\end{zadatak}
+
+Izvršna datoteka je binarna datoteka. Takvim datotekama barata OS. Binarne datoteke su datoteke koje ne sadrže samo tekst. Vrstu datoteke možemo detektirati naredbom \lstinline!file!. Za izvršnu datoteku troslovna oznaka dobivena naredbom \lstinline!file! bit će \lstinline!ELF!, slika spremljena kao \lstinline!png! imat će oznaku \lstinline!PNG!, dok će \lstinline!pdf! dokument imati oznaku \lstinline!pdf!. U Linux zajednici uobičajeni je naziv \textit{binaries} za izvršne binarne datoteke. 
+\begin{zadatak}
+Sadržaj binarne datoteke \texttt{hello} otvorite programom \texttt{hexdump} ili \texttt{od}.
+Naredbom \texttt{strings} ispišite sve stringove u binarnoj datoteci i zapišite ih u datoteku \texttt{vjezba1bin.zip}.
+Naredbom \textbf{\texttt{file}} provjerite format datoteke \texttt{vjezba1bin.zip}. Druge informacije o datoteci možete dobiti naredbom \textbf{\texttt{stat}}.
+\end{zadatak}
+
+\begin{comment} 
+\vfill
+\begin{itemize}
+\renewcommand{\labelitemi}{\textbf{$\rightarrow$}}
+\item Popis svih pokrenutih naredbi eksportirajte u datoteku imena \texttt{prezime\_ime\_vj2.txt}. Uploadajte datoteku na \href{https://moodle.oss.unist.hr/course/view.php?id=133}{http://moodle.oss.unist.hr}.
+\end{itemize}
+\end{comment}
+
+
+
+

@@ -1,0 +1,74 @@
+\section*{Wildcards}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+znak & značenje & primjer\\
+\midrule
+\texttt{*} & zamjenjuju grupu znakova bilo koje veličine& \texttt{echo D*}\\
+\texttt{?} & zamjenjuje jedan znak&\texttt{echo ?ocument}\\
+\texttt{[]} & lista mogućih znakova&\texttt{ls *[tT]}\\ 
+\texttt{-} & raspon znakova &\texttt{ls *[1-5]}\\
+\texttt{!} &invertira listu znakova&\texttt{ls *[!1-5]}\\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{zadatak} Ispišite sve datoteke u direktoriju \texttt{/usr/bin} koje:
+\begin{itemize}
+ \item završavaju sa \texttt{config}.
+ \item počinju sa \texttt{A} ili \texttt{a}.
+ \item završavaju sa znamenkom.
+ \item imaju znamenku \texttt{1} na drugoj poziciji.
+ \item nemaju znamenku na zadnjoj poziciji.
+ \end{itemize}
+\end{zadatak}
+
+ \section*{Naredbe za pretraživanje file systema}
+\subsection*{Pretraživanje naredbom \texttt{find}}
+Sintaksa \texttt{find <path> -name <searchstring>}.
+\begin{center}
+ 
+\begin{tabularx}{\textwidth}{lXl}
+\toprule
+opcija & opis & primjer\\
+\midrule
+\texttt{-name} &pretraživanje po imenu&\lstinline!find /usr/bin/ -name 'v*'!\\ \addlinespace
+\texttt{-iname} &pretraživanje po imenu (\textit{case insensitive}) &\lstinline!find /usr/bin/ -iname 'v*'!\\ \addlinespace
+\texttt{-type} &pretraživanje po tipu&\lstinline!find / -type d -iname '*s'!\\  \addlinespace
+\texttt{-mtime} &pretraživanje datoteka modificiranih u zadanom vremenu&\lstinline!find /var/backups -mtime +5!\\ \addlinespace
+\texttt{-size} &pretraživanje po veličini u blokovima&\lstinline!find /var/backups -size +50!\\ \addlinespace
+\texttt{-newer} &pretraživanje datoteka novijih od navedene&\lstinline!find /var/backups -newer /var/lock!\\ 
+\bottomrule
+\end{tabularx}
+
+\end{center}
+
+\subsection*{Pretraživanje naredbom \texttt{locate}}
+
+Naredba \texttt{locate} omogućava brzo pronalaženje indeksiranih datoteka u datotečnom sustavu. Primjer: \lstinline!locate password!. Indeksiranje se vrši naredbom \lstinline!updatedb!.
+
+\begin{zadatak} Riješite sljedeće zadatke koristeći \texttt{find} ili \texttt{locate} naredbu:
+\begin{enumerate}
+ \item Nađite sve datoteke u \texttt{/usr/games} direktoriju čija imena počinju malim slovom.
+ \item Nađite sve datoteke u \texttt{home} direktoriju kreirane danas.
+ \item Nađite sve datoteke u \texttt{home} direktoriju starije od tjedan dana.
+ \item Nađite lokaciju programa \texttt{rmdir}.
+ \item Nađite lokaciju datoteke \texttt{.bash\_history}. Što je u njoj?
+
+ \item Pronađite datoteku \texttt{.bash\_logout} naredbom \texttt{locate}.
+\item Pronađite sve datoteke u \texttt{home} direktoriju veće od 5MB. Naredba \texttt{find . -size +5000k}.
+\item Pronađite sve datoteke na file systemu koje sadrže u imenu riječ kernel. Naredba \texttt{find / -iname *kernel*}
+\end{enumerate}
+\end{zadatak}
+\begin{comment}
+
+\vfill
+\begin{itemize}
+\renewcommand{\labelitemi}{\textbf{$\rightarrow$}}
+\item Popis svih pokrenutih naredbi eksportirajte u datoteku imena \texttt{prezime\_ime\_vj4.txt}. Uploadajte datoteku na \href{https://moodle.oss.unist.hr/course/view.php?id=133}{http://moodle.oss.unist.hr}.
+\end{itemize}
+
+\end{comment}
+
+
+
+

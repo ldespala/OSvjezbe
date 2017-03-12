@@ -1,0 +1,97 @@
+\section*{redirekcija \lstinline!>!, \lstinline!>>!, \lstinline!<!}
+
+\begin{tabularx}{\textwidth}{lXl}
+\hline
+operator & opis & primjer\\
+\hline
+\lstinline!>! & dodavanje u datoteku ili \texttt{stdout} &  \lstinline!ls ~ > lista.dat!\\
+\lstinline!>>! & dodavanje na kraj datoteke & \lstinline!ls -al ~ >> lista.dat!\\
+\lstinline!<! & ulaz iz datoteke ili \texttt{stdin} & \lstinline!wc -l < lista.dat!\\ 
+\lstinline!2>! & greške (2-\texttt{stderr}) se ispisuju u datoteku & \lstinline!find /etc/ -iname gre* 2> err.dat!\\
+\hline
+\end{tabularx}
+
+\begin{itemize}
+ \item Nakon svakog primjera pogledati datoteke u koje je izlaz preusmjeren. 
+ \item Pogledati \lstinline!man wc!.
+ \item \lstinline!/dev/null! je specijalni file u koji se mogu preusmjeriti neželjeni podaci. \lstinline!/dev/null! je uvijek prazan.\\
+\end{itemize}
+
+\begin{zadatak} Redirekcija:
+\begin{enumerate}
+\item 
+Izvršite sljedeće naredbe:
+\begin{itemize}
+ \item \lstinline!find /etc/ -iname gr*!
+\item \lstinline!find /etc/ -iname gr* 2> vjezba5/err.dat!
+\item \lstinline!find /etc/ -iname gr* 2> /dev/null!
+\end{itemize}             
+Koja je razlika između gornjih naredbi?
+\item Sadržaj direktorija \lstinline!/etc/init! spremite u datoteku \lstinline!etc.dat! (u direktorij \lstinline!vjezba5!).
+\item Koristeći redirekciju i program \lstinline!wc! prebrojite koliko bajtova ima datoteka \lstinline!etc.dat!.
+\item Provjerite rezultat uspoređujući ga sa ispisom \lstinline!ls -al etc.dat!.
+\item Izvršite sljedeće naredbe:
+\begin{itemize}
+ \item \lstinline!cat < etc.dat!
+\item \lstinline!cat < etc.dat > etccopy.dat!
+\item \lstinline!cat < etc.dat > etccopy.dat 2> error.dat!
+\end{itemize}
+Koja je razlika između gornjih naredbi?
+\end{enumerate}
+\end{zadatak}
+
+\section*{grep, cut, sort, head, tail}
+%\\
+%\\
+%\texttt{grep [options] \underline{pattern} [file]}
+\begin{tabularx}{\textwidth}{lXl} 
+\hline 
+naredba & opis & primjer\\
+\hline
+cut & ispisuje određene stupce odvojene delimiterima iz datoteke &\lstinline!cut -f1 -d. etc.dat!\\
+grep & ispisuje linije u kojima se pojavljuje \textit{pattern} & \lstinline!grep hal etc.dat!\\
+sort & sortira linije u tekstualnoj datoteci & \lstinline!sort etc.dat!\\
+head & ispisuje prvih $n$ linija datoteke (default je 10) & \lstinline!head etc.dat!\\
+tail & ispisuje zadnjih $n$ linija datoteke (default je 10) & \lstinline!tail etc.dat!
+\\ \hline
+\end{tabularx}
+\begin{zadatak} Pogledajte sadržaj datoteke \texttt{/etc/passwd} (koristiti naredbu \texttt{cat} ili \texttt{less}).
+
+
+\begin{enumerate}
+
+\item Ispisati samo korisničko ime i home direktorij (tj. prvo i šesto polje) u datoteci \texttt{/etc/passwd}.\\
+ \lstinline!cut -f1,6 -d: /etc/passwd!\\
+-d određuje koji je delimiter koji odvaja polja u redku (u našem primjeru je \lstinline!:!)\\
+-f određuje koja polja će se prikazati (u našem primjeru prvo i šesto)
+\item Iz datoteke \texttt{/etc/passwd} ispisati samo redak koji sadrži riječ \texttt{root}. Koristiti naredbu \texttt{grep}
+\item Ispisati sortiranu datoteku \texttt{/etc/passwd} koristeći naredbu \texttt{sort}.
+\item Ispisati prvih 20 linija \texttt{/etc/passwd} datoteke. Koristiti naredbu \texttt{head}.
+\item Ispisati zadnjih 10 linija \texttt{/etc/passwd} datoteke. Koristiti naredbu \texttt{tail}.
+%\item Ispisati datoteku \texttt{/etc/passwd} sortiranu po polju home direktorij. sort -t: +5 /etc/passwd
+
+\end{enumerate}
+\end{zadatak}
+\section*{pipeline}
+
+\textbf{pipe} ili \textbf{pipeline} je niz od dvije ili više naredbi odvojenih vertikalnom crtom \lstinline!|!. Standardni output prve naredbe, standardni je input druge naredbe.
+
+\begin{zadatak} Izvršite sljedeće linije
+\begin{itemize}
+\item \lstinline!ls | wc -l!
+\item \lstinline!ls | grep dat!
+\item \lstinline!ls | tac! - ispis u obratnom redoslijedu (pogledati \texttt{man tac})
+%\item Kombinirajte 2 datoteke u jednu cat *.dat > sve.dat
+%%\item U jednoj liniji ispišite datum i sve logirane usere i spremite u novu datoteku users nakon sto ste prebrojali linije 
+%(date ; who) | nl > users
+\end{itemize}
+\end{zadatak}
+\begin{comment}
+ 
+\vfill
+\begin{itemize}
+\renewcommand{\labelitemi}{\textbf{$\rightarrow$}}
+\item Popis svih pokrenutih naredbi eksportirajte u datoteku imena \texttt{prezime\_ime\_vj5.txt}. Uploadajte datoteku na \href{https://moodle.oss.unist.hr/course/view.php?id=133}{http://moodle.oss.unist.hr}.
+\end{itemize}		
+
+\end{comment}

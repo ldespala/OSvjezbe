@@ -1,0 +1,202 @@
+\section*{Shell skripte ... nastavak}
+
+\subsection*{Uvjetno izvršavanje}
+\textbf{Uvjetno izvršavanje} je izvršavanje naredbe ili skupa naredbi u ovisnosti o povratnoj vrijednosti druge naredbe. Realizira se pomoću \texttt{if then else fi} notacije.
+
+\paragraph{Sintaksa \texttt{if} naredbe}
+\begin{lstlisting}
+if test-commands; then
+    consequent-commands;
+[elif more-test-commands; then
+    more-consequents;]
+[else alternate-consequents;]
+fi
+\end{lstlisting}
+
+Ukoliko se izvršava samo jedna naredba moguće je zamijeniti \texttt{if then fi} sa naredbama \texttt{\&\&} i \texttt{||}.
+\begin{itemize}
+ \item 
+\lstinline!command1 && command2 ! je ekvivalentno 
+
+\lstinline!if (command1 successful) then do (command2)!
+
+\item \lstinline!command1 || command2 ! je ekvivalentno 
+
+\lstinline!if (command1 not successful) then do (command2)!
+
+\end{itemize}
+
+
+\subsection*{Uglate zagrade}
+% http://wiki.bash-hackers.org/commands/classictest
+Uglate zagrade su samo pokrata za naredbu \texttt{test}. 
+\\
+Sintaksa: \texttt{test <IZRAZ>}
+\\
+\texttt{<IZRAZ>} je kombinacija opcija i vrijednosti.
+\begin{lstlisting}
+#!/bin/bash
+# test da li /etc/passwd postoji
+
+if test -e /etc/passwd; then
+  echo "Alright man..." >&2
+else
+  echo "Yuck! Where is it??" >&2
+  exit 1
+fi
+\end{lstlisting}
+Drugi način je testiranje pomoću uglate zagrade \texttt{[}. Naredba završava zatvorenom uglatom zagradom \texttt{]}. \\
+Uglata zagrada \texttt{[} nije dio \texttt{if} naredbe.\\.
+Sintaksa je \texttt{[ <IZRAZ> ]} (uočite razmak nakon otvorene uglate zagrade).
+\begin{lstlisting}
+#!/bin/bash
+# test da li /etc/passwd postoji
+
+if [ -e /etc/passwd ]; then
+  echo "Alright man..." >&2
+else
+  echo "Yuck! Where is it??" >&2
+  exit 1
+fi
+\end{lstlisting}
+
+Za \texttt{test-commands} pogledajte link \href{http://www.ibm.com/developerworks/library/l-bash-test/index.html}{Bash test and comparison functions}. Neki od test naredbi su dani u 
+sljedećoj tablici:\\
+\begin{longtable}{ll}
+  \hline
+  \multicolumn{2}{c}{Izrazi za testiranje statusa datoteke} \\
+  \hline
+  \texttt{-f <file>} & file je obična datoteka \\
+  \texttt{-d <file>} & file je direktorij \\
+  \texttt{-r <file>} & file ima pravo čitanja \\
+  \texttt{-w <file>} & file ima pravo pisanja \\
+  \texttt{-x <file>} & file ima pravo izvršavanja \\
+  \texttt{-s <file>} & file nije prazan (ima nenula duljinu) \\
+  \texttt{-e <file>} & file postoji \\
+  \hline
+  \multicolumn{2}{c}{Izrazi za testiranje stringova} \\
+  \hline
+  \texttt{-n <string>} & string nije prazan \\
+  \texttt{-z <string>} & string je prazan \\
+  \texttt{<string> == <string>} & stringovi su jednaki \\
+\texttt{<string> != <string>} & stringovi nisu jednaki \\
+\hline
+  \multicolumn{2}{c}{Aritmetički izrazi} \\
+  \hline
+  \texttt{<value> -eq <value>} & jednakost \\
+  \texttt{<value> -ne <value>} & nejednakost \\
+  \texttt{<value> -lt <value>} & manje od \\
+  \texttt{<value> -le <value>} & manje ili jednako \\
+  \texttt{<value> -gt <value>} & veće od \\
+  \texttt{<value> -ge <value>} & veće ili jednako \\
+\hline
+\end{longtable}
+\begin{primjer} 
+Izvršite sljedeću skriptu. Što radi?
+\begin{lstlisting}
+#!/bin/bash
+A=101
+if [ "$A" -eq 10 ]
+then
+    echo A = 10
+else
+    echo A != 10
+fi
+\end{lstlisting}
+\end{primjer}
+\begin{zadatak} Modificirajte zadatak iz prethodne vježbe (osnovne aritmetičke operacije s parametrima) tako da se parametri zbroje ako je prvi parametar manji od drugog parametra, 
+pomnože ako su jednaki, a oduzmu ako je prvi parametar veći od drugog parametra.
+\end{zadatak}
+\subsection*{Naredbe za ponavljanje}
+
+ \subsubsection*{Naredba \texttt{while}}
+Sintaksa:
+\begin{lstlisting}
+while expression is true
+do
+    command(s)
+done
+\end{lstlisting}
+
+\begin{primjer} Proučite i izvršite!
+\begin{lstlisting}
+#!/bin/bash
+count=0
+max=10
+while [ $count != $max ]; do count=`expr $count + 1`
+    echo "$count"
+donemoodle
+\end{lstlisting}
+\end{primjer}
+
+\subsubsection*{Naredba \texttt{for}}
+Sintaksa:
+\begin{lstlisting}
+for identifier in list
+do
+    command(s) to be executed
+done
+\end{lstlisting}
+
+\begin{primjer} Proučite i izvršite!
+\begin{enumerate}
+ \item
+\begin{lstlisting}
+#!/bin/bash
+for i in 1 2 3 4 
+do
+   echo "$i"
+done 
+\end{lstlisting}
+
+\item 
+\begin{lstlisting}
+#!/bin/bash
+for i in {1..4}
+do
+   echo "$i"
+done 
+\end{lstlisting}
+
+\item 
+\begin{lstlisting}
+#!/bin/bash
+for i in {1..10..2}
+do
+   echo "$i"
+done 
+\end{lstlisting}
+
+\item 
+\begin{lstlisting}
+#!/bin/bash
+for (( i=0; i<5; i++ ))
+do
+   echo "$i"
+done 
+\end{lstlisting}
+
+\item 
+\begin{lstlisting}
+#!/bin/bash
+count=0
+for d in *
+do
+  count=`expr $count + 1`
+  echo $d
+done
+echo $count
+\end{lstlisting}
+\end{enumerate}
+\end{primjer}
+
+
+\begin{comment}
+
+\vfill
+\begin{itemize}
+\renewcommand{\labelitemi}{\textbf{$\rightarrow$}}
+\item Popis svih pokrenutih naredbi zajedno sa skriptama eksportirajte u datoteku imena \texttt{prezime\_ime\_vj9.txt}. Uploadajte datoteku na \href{https://moodle.oss.unist.hr/course/view.php?id=133}{http://moodle.oss.unist.hr}.
+\end{itemize}
+
+\end{comment}

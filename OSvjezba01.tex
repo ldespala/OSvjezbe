@@ -1,0 +1,33 @@
+
+
+\section{Instaliranje Linux operativnog sustava na virtualnu mašinu}
+Virtualna mašina (VM) je program koji simulira računalo i na koju možemo instalirati drugi operativni sustav. Operativni sustav (OS) računala zovemo \textit{host} OS, a operativni sustav instaliran na VM zovemo \textit{guest} OS.
+
+U ovoj vježbi instalirat ćemo Linux OS Mint distribuciju koja je bazirana na Ubuntu distribuciji koja je pak bazirana na Debian distribuciji. Sve \textit{Debian-based} distribucije imaju isti sustav pakiranja i instaliranja programa.
+
+\begin{zadatak} Slijediti sljedeće korake instalacije:
+\begin{itemize}
+\item Odabrati Linux distribuciju, te preuzeti njenu \texttt{.iso} datoteku.
+\item Kopirati \texttt{.iso} datoteku na disk.
+\item  Pokrenuti Oracle VirtualBox manager.
+\item Iz izbornika odabrati Machine, New.
+\item Upisati karakteristike virtualnog stroja: Naziv, Tip (Linux), Verzija (Ubuntu 32-bit), RAM (1500 MB)
+\item Napraviti virtualni hard disk (VDI, Dynamic, 16 GB)
+\item Odabrati ISO sliku: VM settings, Storage, označiti DVD (Empty), Choose Virtual Optical Disk File
+%\item Pokrenuti VMWare player ili workspace.
+%\item Odabrati opciju: instaliranje novog operativnog sustava.
+\item Instalirati operativni sustav. Odabrati \textbf{manualno} određivanje veličine particija.
+    
+\item Prijedlog veličina particije 
+
+\begin{tabular}{lll}
+ \texttt{/} & ext4 & 12GB \\
+ \texttt{swap} & linux swap & max 1 GB\\
+ \texttt{/home} & ext4 & 3GB 
+ \end{tabular}
+\item username: student\\
+      password: student123  
+\end{itemize}
+\end{zadatak}
+ 
+
