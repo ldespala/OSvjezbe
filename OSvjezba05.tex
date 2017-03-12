@@ -1,4 +1,4 @@
-\section*{redirekcija \lstinline!>!, \lstinline!>>!, \lstinline!<!}
+\section{Redirekcija \lstinline!>!, \lstinline!>>!, \lstinline!<!}
 
 \begin{tabularx}{\textwidth}{lXl}
 \hline
@@ -40,7 +40,7 @@ Koja je razlika između gornjih naredbi?
 \end{enumerate}
 \end{zadatak}
 
-\section*{grep, cut, sort, head, tail}
+\section{Naredbe grep, cut, sort, head, tail}
 %\\
 %\\
 %\texttt{grep [options] \underline{pattern} [file]}
@@ -72,20 +72,7 @@ tail & ispisuje zadnjih $n$ linija datoteke (default je 10) & \lstinline!tail et
 
 \end{enumerate}
 \end{zadatak}
-\section*{pipeline}
 
-\textbf{pipe} ili \textbf{pipeline} je niz od dvije ili više naredbi odvojenih vertikalnom crtom \lstinline!|!. Standardni output prve naredbe, standardni je input druge naredbe.
-
-\begin{zadatak} Izvršite sljedeće linije
-\begin{itemize}
-\item \lstinline!ls | wc -l!
-\item \lstinline!ls | grep dat!
-\item \lstinline!ls | tac! - ispis u obratnom redoslijedu (pogledati \texttt{man tac})
-%\item Kombinirajte 2 datoteke u jednu cat *.dat > sve.dat
-%%\item U jednoj liniji ispišite datum i sve logirane usere i spremite u novu datoteku users nakon sto ste prebrojali linije 
-%(date ; who) | nl > users
-\end{itemize}
-\end{zadatak}
 \begin{comment}
  
 \vfill

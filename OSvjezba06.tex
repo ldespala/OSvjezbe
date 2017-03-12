@@ -1,3 +1,17 @@
+\section*{Pipeline}
+
+\textbf{Pipe} ili \textbf{pipeline} je niz od dvije ili više naredbi odvojenih vertikalnom crtom \lstinline!|!. Standardni output prve naredbe, standardni je input druge naredbe.
+
+\begin{zadatak} Izvršite sljedeće linije
+\begin{itemize}
+\item \lstinline!ls | wc -l!
+\item \lstinline!ls | grep dat!
+\item \lstinline!ls | tac! - ispis u obratnom redoslijedu (pogledati \texttt{man tac})
+%\item Kombinirajte 2 datoteke u jednu cat *.dat > sve.dat
+%%\item U jednoj liniji ispišite datum i sve logirane usere i spremite u novu datoteku users nakon sto ste prebrojali linije 
+%(date ; who) | nl > users
+\end{itemize}
+\end{zadatak}
 \begin{zadatak} 
 U direktoriju kreirajte direktorij \texttt{etc}.
 
@@ -7,8 +21,7 @@ U direktoriju kreirajte direktorij \texttt{etc}.
 \end{enumerate}
 \end{zadatak}
 
-\section*{Pipeline - nastavak}
-\textbf{Pipe} ili \textbf{pipeline} je niz od dvije ili više naredbi odvojenih vertikalnom crtom \texttt{|}. Standardni output prve naredbe, standardni je input druge naredbe.
+
 \begin{itemize}
 \item \lstinline!ls | grep dat!
 \item Iz datoteke \texttt{/etc/passwd} izdvojite prvi i šesti stupac koji se odnose na user-a \texttt{mail}. Kombinirajte \texttt{grep} i \texttt{cut}. 
@@ -20,7 +33,7 @@ U direktoriju kreirajte direktorij \texttt{etc}.
 %%\item U jednoj liniji ispišite datum i sve logirane usere i spremite u novu datoteku users nakon sto ste prebrojali linije 
 %(date ; who) | nl > users
 \end{itemize}
-\section*{Filteri}
+\section{Filteri}
 \textbf{Filter} je naredba koja čita sa standardnog ulaza (\texttt{stdin}), trensformira ulaz i piše na standardni output. Može biti srednji dio pipelinea.
 
 \begin{primjer} Isprobajte sljedeće naredbe

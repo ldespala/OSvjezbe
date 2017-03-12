@@ -45,7 +45,7 @@ man command
 
 \subsection*{Opće naredbe}
 \begin{zadatak}
-Izvršiti sljedeće naredbe u komandnoj liniji.
+Izvršiti sljedeće naredbe u komandnoj liniji:
 \begin{itemize}
 % \item Promjenite password. Novi password: os123. Naredba \textbf{\texttt{passwd}}.
 \item Ispisati datum. Naredba \textbf{\texttt{date}}.
@@ -69,7 +69,7 @@ Izvršiti sljedeće naredbe u komandnoj liniji.
 \end{zadatak}
 \subsection*{Tips and tricks}
 \begin{zadatak}
-Izvršiti sljedeće naredbe u komandnoj liniji.
+Isprobati sljedeće u komandnoj liniji:
 \begin{itemize}
  \item Pomoću strelice gore i strelice dolje možemo pristupiti već izvršenim naredbama. Isprobati!
 \item Za pregled prethodnih naredbi i rezultata koristiti shift+page-up, shift+page-down.
@@ -102,7 +102,7 @@ Osnovne \texttt{apt} naredbe:
 
 \subsection*{Instaliranje programa (Ubuntu, Mint i ostale Debian distribucije)}
 \begin{zadatak}
-Izvršiti sljedeće naredbe u komandnoj liniji.
+Izvršiti sljedeće naredbe u komandnoj liniji:
 \begin{itemize}
  \item Pokreniti program synaptic (kao \texttt{root}) i instalirajte program code::blocks ili neki drugi C IDE. Zatvorite synaptic.
 \item Koristeći naredbu \textbf{\texttt{apt-get}} napravite update repozitorija (\texttt{sudo apt-get update}), a zatim instalirajte neki program (npr.~\texttt{sudo apt-get install fslint}).
@@ -128,11 +128,15 @@ Kompajlirati jednostavan C program.
 \end{itemize}
 \end{zadatak}
 
-Izvršna datoteka je binarna datoteka. Takvim datotekama barata OS. Binarne datoteke su datoteke koje ne sadrže samo tekst. Vrstu datoteke možemo detektirati naredbom \lstinline!file!. Za izvršnu datoteku troslovna oznaka dobivena naredbom \lstinline!file! bit će \lstinline!ELF!, slika spremljena kao \lstinline!png! imat će oznaku \lstinline!PNG!, dok će \lstinline!pdf! dokument imati oznaku \lstinline!pdf!. U Linux zajednici uobičajeni je naziv \textit{binaries} za izvršne binarne datoteke. 
+Izvršna datoteka je binarna datoteka. Takvim datotekama barata OS. Binarne datoteke su datoteke koje ne sadrže samo tekst. Vrstu datoteke možemo detektirati naredbom \lstinline!file!. Za izvršnu datoteku troslovna oznaka dobivena naredbom \lstinline!file! bit će \lstinline!ELF!, slika spremljena kao \lstinline!png! imat će oznaku \lstinline!PNG!, dok će \lstinline!pdf! dokument imati oznaku \lstinline!PDF!. U Linux zajednici uobičajeni je naziv \textit{binaries} za izvršne binarne datoteke. 
 \begin{zadatak}
 Sadržaj binarne datoteke \texttt{hello} otvorite programom \texttt{hexdump} ili \texttt{od}.
-Naredbom \texttt{strings} ispišite sve stringove u binarnoj datoteci i zapišite ih u datoteku \texttt{vjezba1bin.zip}.
-Naredbom \textbf{\texttt{file}} provjerite format datoteke \texttt{vjezba1bin.zip}. Druge informacije o datoteci možete dobiti naredbom \textbf{\texttt{stat}}.
+\end{zadatak}
+\begin{zadatak}
+Naredbom \texttt{strings} ispišite sve stringove u binarnoj datoteci i zapišite ih u datoteku \texttt{vjezba1bin.zip}. Naredbom \textbf{\texttt{file}} provjerite format datoteke \texttt{vjezba1bin.zip}. 
+\end{zadatak}
+\begin{zadatak}
+Koje informacije o datoteci možete dobiti naredbom \textbf{\texttt{stat}}?
 \end{zadatak}
 
 \begin{comment} 

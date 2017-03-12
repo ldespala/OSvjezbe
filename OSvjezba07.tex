@@ -1,12 +1,4 @@
-\begin{zadatak} Nakon svake izvršene naredbe u primjerima i zadacima, izvršite naredbu \texttt{ls -l} kako bi vidjeli promjene.
-\begin{itemize}
-\item U direktoriju \texttt{vjezba7} kreirajte datoteku main.c u kojoj će biti neki c program.
-\item Iskompajlirajte ga: \texttt{gcc -o main main.c} 
-\item Napravite kopiju datoteke \texttt{main.c}. Neka se kopija zove \texttt{kopija.c}.
-\end{itemize}
-\end{zadatak}
-
-\section*{Dozvole i vlasništvo datoteka i direktorija (\textit{file permission})}
+\section{Dozvole i vlasništvo datoteka i direktorija (\textit{file permission})}
 \subsection*{Korisnici i grupe}
 Da bi se datoteke zaštitile od neovlaštenog pristupa, Linux dozvoljava postavljanje dozvola korištenja datoteka i direktorija. Dozvole se određuju za:
 \begin{itemize}
@@ -76,6 +68,13 @@ Z - oktalna znamenka (znamenka između 0 i 7)
 \item \texttt{chmod 755 main} - svi dobiju pravo izvršavanja uz već postojeća prava.
 \end{itemize}
 \end{primjer}
+\begin{zadatak} Nakon svake izvršene naredbe u primjerima i zadacima, izvršite naredbu \texttt{ls -l} kako bi vidjeli promjene.
+\begin{itemize}
+\item U direktoriju \texttt{vjezba7} kreirajte datoteku main.c u kojoj će biti neki c program.
+\item Iskompajlirajte ga: \texttt{gcc -o main main.c} 
+\item Napravite kopiju datoteke \texttt{main.c}. Neka se kopija zove \texttt{kopija.c}.
+\end{itemize}
+\end{zadatak}
 \begin{zadatak}
 Datoteci \texttt{kopija.c} dodijelite takva prava da samo \texttt{user} može mijenjati datoteku. 
 \end{zadatak}
