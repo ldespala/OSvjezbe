@@ -1,0 +1,5 @@
+*.log
+*.aux
+*.out
+OSvjezba_standalone.synctex.gz
+*.pdf
