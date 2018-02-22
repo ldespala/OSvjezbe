@@ -18,7 +18,7 @@ itd.
 \subsection*{Pisanje shell skripte}
 Koraci:
 \begin{enumerate}
- \item Napisati skriptu npr. \texttt{script1} u nekom editoru (npr. \texttt{gedit}). U prvom redku napisati \lstinline!#!/bin/bash!.
+ \item Napisati skriptu npr. \texttt{script1} u nekom editoru (npr. \texttt{gedit}). U prvom redku napisati \lstinline!#!!/bin/bash.
 \item Dodijeliti pravo izvršavanja (\texttt{x}) skripti npr. \lstinline!chmod 755 script1!
 \item Smjestiti je negdje gdje je shell može naći npr. u tekući direktorij 
 \item Izvršiti je npr. \texttt{./script1}
@@ -49,7 +49,7 @@ Napišite (i proučite) skriptu \texttt{prva} i izvršite je sa \texttt{./prva j
 #!/bin/bash
 echo Ime skripte: $0
 echo Prvi parametar: $1
-echo Prvi parametar: $2
+echo Drugi parametar: $2
 echo Broj parametara: $#
 \end{lstlisting}
 \end{zadatak}
