@@ -1,0 +1,59 @@
+
+\subsection*{Rad na udaljenom računalu}
+
+Ova vježba radi se na udaljenom poslužitelju, koristeći program Putty koji komunicira s poslužiteljem na adresi 192.168.4.4 koristeći SSH protokol.
+
+\subsection*{Spajanje na poslužitelj}
+Prilikom spajanja na poslužitelj, studenti se spajaju koristeći korisničko ime i lozinku u sljedećem obliku: 
+
+GRUPA*100 + BROJ\_RACUNALA
+
+Primjer: student iz druge grupe koji sjedi na šestom računalu od ulaznih vrata u smjeru kazaljke na satu koristit će korisničko ime i lozinku 206.
+
+
+\subsection*{Rad na poslužitelju}
+Svaki korisnik na poslužitelju ima svoj direktorij (/home/username, odnosno \textasciitilde) i sve radnje treba obavljati unutar njega. Student ne bi trebao napuštati svoj direktorij, a u niti jednoj situaciji nije dozvoljeno pristupati tuđim podatcima. Općenito nije dozvoljeno na bilo koji način ugrožavati sigurnost ili remetiti rad sustava, te pristupati datotekama izvan vlastitog direktorija ili direktorija /materijali.
+
+\begin{primjer}
+	Pozicioniranje u \textit{home} direktorij
+	\begin{itemize}
+		\item \lstinline!cd ~!
+		\item \lstinline!pwd!
+		\item \lstinline!ls!
+		\item \lstinline!ls ~!
+		\item \lstinline!ls /home/102! 
+	\end{itemize}
+\end{primjer}
+
+\begin{zadatak} U direktoriju \texttt{\textasciitilde}  kreirajte direktorij \texttt{zad1} i u njemu riješite sljedeće zadatke:
+	\begin{itemize}
+		\item Ispitajte koji je tekući direktorij.
+		\item Napravite direktorij \textasciitilde /zad01/tmp
+		\item Promjenite tekući direktorij u novokreirani direktorij.
+		\item u direktoriju tmp napravite datoteke \texttt{prva} \texttt{druga} \texttt{treca}.
+		\item Isprobajte naredbu \texttt{tree} i njen izlaz preusmjerite u datoteku \texttt{treeoutput}
+		\item Kopirajte datoteku \texttt{prva} u direktorij  \texttt{\textasciitilde}
+		\item Preimenujte datoteku \texttt{prva} u \texttt{prvatmp}
+		\item Pomaknite datoteku \texttt{druga} u direktorij  \texttt{\textasciitilde} i preimenujte je u \texttt{druga2} koristeći samo jednu naredbu \texttt{mv}.
+		\item Kopirajte direktorij \texttt{zad1} i sve datoteke u njemu u direktorij \texttt{zad1b}.
+	\end{itemize}
+\end{zadatak}
+
+
+\begin{zadatak} 
+	U direktoriju \texttt{\textasciitilde} kreirajte direktorij \texttt{zad2} i uđite u njega.
+		\item U direktoriju \texttt{zad02} kreirajte datoteku sa nastavkom \texttt{.txt} u kojoj su zapisane datoteke iz direktorija \texttt{/etc} koje počinju sa slovom \texttt{a}.
+		
+\end{zadatak}
+
+\begin{zadatak}
+	U direktoriju \texttt{\textasciitilde} kreirajte direktorij \texttt{zad3}  i uđite u njega. Datoteku \texttt{/materijali/mjesta} kopirajte u tekući direktorij. Datoteci \texttt{mjesta} dodijelite takva prava da samo vlasnik može čitati sadržaj datoteke.
+\end{zadatak}
+
+\begin{zadatak}
+	U direktoriju \texttt{\textasciitilde}  kreirajte direktorij \texttt{zad4}. Datoteku \texttt{/materijali/mjesta} kopirajte u tekući direktorij. Sadržaj datoteke \texttt{mjesta} sortirajte po abecedi i izlaz upišite u datoteku \texttt{mjesta\_sort} 
+\end{zadatak}
+
+\subsection*{Prebacivanje povijesti naredbi na sustav Moodle}
+
+Naredbom \texttt{sharehistory} uploadajte povijest naredbi na web. Otvorite dobiveni link u pregledniku i kopirajte naredbe u tekstualnu datoteku koju ćete predati na Moodle prema uobičajenim pravilima.
