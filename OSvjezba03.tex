@@ -10,11 +10,18 @@ cd path
 
 \begin{primjer} Korištenje naredbe \texttt{cd}.
 \begin{itemize}
-\item \texttt{cd naziv\_dir} - tekući direktorij postaje naziv\_dir
-\item \texttt{cd ..} - tekući direktorij postaje roditelj
-\item \texttt{cd /var/spool/anacron} - tekući direktorij postaje \texttt{/var/spool/anacron}
+\item \texttt{cd naziv\_dir} - naziv\_dir postaje tekući direktorij
+\item \texttt{cd ..} - prebacivanje u roditeljski direktorij
+\item \texttt{cd /var/spool/anacron} -  \texttt{/var/spool/anacron} postaje tekući direktorij
+\item \texttt{cd \~} prebacivanje u korisnikov \texttt{home} direktorij
 \end{itemize}
 \end{primjer}
+
+\item Ljuska proširuje znak tilda u putanju do korisnikovog home direktorija
+
+\begin{prototip}
+echo ~
+\end{prototip}
 
 \item \texttt{ls} - daje popis datoteka i direktorija u danom direktoriju (ako nema parametara, izlista se tekući direktorij)
 \begin{prototip}
@@ -30,7 +37,7 @@ ls direktorij
 \newline Neke od opcija naredbe \texttt{ls}
 \begin{itemize}
 \item \texttt{ls -l} prikazuje detaljniji ispis
- \item \texttt{ls -a} prikazuje i datoteke koje počinju s . (hidden file)
+\item \texttt{ls -a} prikazuje i datoteke koje počinju s . (hidden file)
 \item \texttt{ls -al} kombinacija prethodne dvije opcije
 \item \texttt{ls -r} ispisuje sadržaj direktorija u obrnutom redoslijedu (leksikografski)
 \end{itemize}
@@ -78,11 +85,10 @@ mv sto gdje
 \end{itemize}
 %\section{Zadaci}
 \begin{zadatak}
-Isprobajte:
 \begin{itemize}
-\item Što rade sljedeće naredbe: \textbf{\texttt{cd}}, \textbf{\texttt{ls}}, \textbf{\texttt{mkdir}}, \textbf{\texttt{rmdir}}, \textbf{\texttt{pwd}}?
+\item Isprobajte što rade sljedeće naredbe: \textbf{\texttt{cd}}, \textbf{\texttt{ls}}, \textbf{\texttt{mkdir}}, \textbf{\texttt{rmdir}}, \textbf{\texttt{pwd}}?
 \item Koristeći naredbu \textbf{\texttt{touch}} kreirati novu datoteku.
-\item Sadržaj nekog direktorija ispišite u novu datoteku koristeći preusmjeravanje\textbf{ \texttt{>}}.
+\item Sadržaj nekog direktorija ispišite u datoteku \texttt{listing} koristeći preusmjeravanje\textbf{ \texttt{>}}.
 \item Koristeći naredbe \textbf{\texttt{cat}} i \textbf{\texttt{less}} prikazati sadržaj neke datoteke.
 \end{itemize}
 
@@ -91,10 +97,14 @@ Isprobajte:
 \begin{zadatak} Riješite sljedeće zadatke koristeći naredbe \textbf{\texttt{cd}}, \textbf{\texttt{ls}}, \textbf{\texttt{mkdir}}, \textbf{\texttt{rmdir}}, \textbf{\texttt{mv}}, \textbf{\texttt{cp}}, \textbf{\texttt{pwd}}:
 \begin{itemize}
 \item Ispitajte koji je tekući direktorij (direktorij u kojem se nalazite). Naredba \texttt{pwd}.
-\item Promjenite tekući direktorij. Neka novi bude novokreirani direktorij. Naredba \texttt{cd}.
+\item Promjenite tekući direktorij u root (/). Naredba \texttt{cd}.
+\item Ispišite putanju do svog home direktorija. Naredba \texttt{echo \$HOME}.
+\item Prebacite se u svoj home direktorij.
+\item Napravite direktorij \texttt{vjezba3} i prebacite se u njega.
 \item Kreirajte direktorij \texttt{tmp} i u njemu nekoliko datoteka (npr. prva, druga i treca).
-\item Naredbom \texttt{tree} provjerite učinjeno.
-\item Izlistajte popis datoteka u tekućem direktoriju. Naredba \texttt{ls}. Ispitajte opcije naredbe \texttt{ls}: \texttt{ls -a, ls -l, ls -d, ls -t, ls .., ls .} i kombinacije npr. \texttt{ls -ltr}.
+\item Prebacite se u svoj home direktorij pa provjerite učinjeno naredbom \texttt{tree}.
+\item Izlistajte popis datoteka u tekućem direktoriju. Naredba \texttt{ls}.
+\item Ispitajte opcije naredbe \texttt{ls}: \texttt{ls -a, ls -l, ls -d, ls -t, ls .., ls .} i kombinacije npr. \texttt{ls -ltr}.
 \item Kopirajte datoteku \texttt{prva} u direktorij \texttt{vjezba3}. Naredba \texttt{cp}.
 \item Preimenujte datoteku \texttt{prva} u \texttt{prvatmp} koristeći naredbu \texttt{mv}.
 \item Pomaknite datoteku \texttt{druga} u direktorij \texttt{vjezba3} i preimenujte je koristeći samo jednu naredbu \texttt{mv}.
@@ -106,12 +116,12 @@ Isprobajte:
 \begin{itemize}
  \item Prikažite svoj \texttt{search path}. Naredba \texttt{echo \$PATH\$} 
  
- \todo[inline]{Možda bi trebalo objasniti što je path. Koristio bih znak \$ samo na prije naziva varijable, ne poslije. Ne znam je li pojam "search" path najbolji.}
+ \todo[inline]{Možda bi trebalo objasniti što je path. Koristio bih znak \$ samo prije naziva varijable, ne poslije. Ne znam je li pojam "search" path najbolji.}
  
 %\item Eksportirajte neki path sa \texttt{export PATH=blabla} i pokušajte izlistati sadržaj direktorija.
-\item Koja je putanja do vašeg \texttt{home} direktorija. Naredba \texttt{pwd}. 
+\item Koja je putanja do vašeg \texttt{home} direktorija? Naredba \texttt{echo \~}. 
 \item Idite u \texttt{/var/tmp} direktorij.
-\item Idite u \texttt{/var/spool/anacron} direktorij koristeći samo jednu naredbu. Koji je vaš tekući direktorij (\texttt{pwd})?
+\item Idite u \texttt{/var/spool/anacron} direktorij koristeći samo jednu naredbu. Provjerite koji je vaš tekući direktorij?
 \item Vratite se u direktorij vjezba3.
 \end{itemize}
 
@@ -121,13 +131,7 @@ Isprobajte:
 \item Koji CPU koristi vaše računalo?
 \item Koliko RAM-a trenutno koristi?
 \item Koliki je \texttt{swap space}?
-\item Koje file sisteme poznaje vaš operativni sustav?
+\item Koje datotečne sustave poznaje vaš operativni sustav?
 \end{itemize}
 
-%\textbf{File permissions}
-%\begin{itemize}
-%\item Možete li promijeniti datotečne dozvole \textit{file permissions} na \texttt{/home} direktoriju?
-%\item Koji je standardni mod prilikom kreiranja datoteke?
-%\item Promijenite dozvole za datoteke koje ste kreirali u direktoriju \texttt{tmp2}
-%\end{itemize}
 \vfill
