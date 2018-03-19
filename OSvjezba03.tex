@@ -1,8 +1,8 @@
-\section{Naredbe za navigaciju file systemom}
+\section{Naredbe za navigaciju datotečnim sustavom}
 U radu s terminalom bitan podatak je tekući direktorij. To je trenutna pozicija u datotečnom sustavu.
 Datotečni sustav ima hijerarhijsku strukturu direktorija. Na vrhu je root direktorij (/), njegova djeca su \texttt{bin}, \texttt{home}, \texttt{sbin}, \texttt{var}, \texttt{proc} itd.
 \begin{itemize}
-\item Naredba \texttt{pwd} ispisuje radni ili tekući direktorij. Prilikom pokretanja shella, tekući direktorij biti će \texttt{/home/student}.
+\item Naredba \texttt{pwd} ispisuje radni ili tekući direktorij. Prilikom pokretanja ljuske (eng. shell), tekući direktorij biti će \texttt{/home/student}.
 \item \texttt{cd} - promjena tekućeg direktorija (\textit{change directiory})
 \begin{prototip}
 cd path
@@ -10,7 +10,7 @@ cd path
 
 \begin{primjer} Korištenje naredbe \texttt{cd}.
 \begin{itemize}
-\item \texttt{cd ime\_dir} - tekući direktorij postaje ime\_dir
+\item \texttt{cd naziv\_dir} - tekući direktorij postaje naziv\_dir
 \item \texttt{cd ..} - tekući direktorij postaje roditelj
 \item \texttt{cd /var/spool/anacron} - tekući direktorij postaje \texttt{/var/spool/anacron}
 \end{itemize}
@@ -22,7 +22,7 @@ ls direktorij
 \end{prototip}
 \begin{primjer} Primjer korištenja naredbe \texttt{ls}.
 \begin{itemize}
- \item \texttt{ls ime\_dir} - sadržaj direktorija \texttt{ime\_dir}
+ \item \texttt{ls naziv\_dir} - sadržaj direktorija \texttt{naziv\_dir}
 \item \texttt{ls ..} - sadržaj roditeljskog direktorija
 \item \texttt{ls /var} - sadržaj direktorija \texttt{/var}
 \end{itemize}
@@ -30,7 +30,7 @@ ls direktorij
 \newline Neke od opcija naredbe \texttt{ls}
 \begin{itemize}
 \item \texttt{ls -l} prikazuje detaljniji ispis
- \item \texttt{ls -a} prikazuje i datoteke koje počinju sa . (hidden file)
+ \item \texttt{ls -a} prikazuje i datoteke koje počinju s . (hidden file)
 \item \texttt{ls -al} kombinacija prethodne dvije opcije
 \item \texttt{ls -r} ispisuje sadržaj direktorija u obrnutom redoslijedu (leksikografski)
 \end{itemize}
@@ -38,12 +38,12 @@ ls direktorij
 
 \item \texttt{mkdir} kreira direktorij
 \begin{prototip}
-mkdir ime_dir 
+mkdir naziv_dir 
 \end{prototip}
 
 \item \texttt{rmdir} briše direktorij. Direktorij treba biti prazan, inače \texttt{rm -r}
 \begin{prototip}
-rmdir ime_dir 
+rmdir naziv_dir 
 \end{prototip}
 
 
@@ -54,9 +54,9 @@ cp sto gdje
 
 \begin{primjer} Primjer korištenja naredbe \texttt{cp}
 \begin{itemize}
- \item \lstinline!cp ime.txt ~/dir1/! - kopira datoteku \texttt{ime.txt} iz tekućeg direktorija u direktorij \lstinline!~/dir1/!
-\item \lstinline!cp ime.txt ../! - kopira datoteku \texttt{ime.txt} iz tekućeg direktorija u roditeljski direktorij \texttt{..}
-\item \lstinline!cp ime.txt ../ime2.txt! - kopira datoteku \texttt{ime.txt} iz tekućeg direktorija u roditeljski direktorij \texttt{..} s novim imenom.
+ \item \lstinline!cp naziv.txt ~/dir1/! - kopira datoteku \texttt{naziv.txt} iz tekućeg direktorija u direktorij \lstinline!~/dir1/!
+\item \lstinline!cp naziv.txt ../! - kopira datoteku \texttt{naziv.txt} iz tekućeg direktorija u roditeljski direktorij \texttt{..}
+\item \lstinline!cp naziv.txt ../naziv2.txt! - kopira datoteku \texttt{naziv.txt} iz tekućeg direktorija u roditeljski direktorij \texttt{..} s novim nazivom.
  \item \lstinline!cp -R dir1 dir2! - kopira direktorij i sve njegove elemente u drugi direktorij 
 \end{itemize}
 \end{primjer}
@@ -68,9 +68,9 @@ mv sto gdje
 
 \begin{primjer} Primjer korištenja naredbe \texttt{mv}.
 \begin{itemize}
- \item \lstinline!mv ime.txt ~/dir1/! - premješta datoteku \texttt{ime.txt} iz tekućeg direktorija u direktorij \lstinline!~/dir1/!
+ \item \lstinline!mv naziv.txt ~/dir1/! - premješta datoteku \texttt{naziv.txt} iz tekućeg direktorija u direktorij \lstinline!~/dir1/!
  \item \lstinline!mv -R dir1 dir2! - premješta direktorij i sve njegove elemente u drugi direktorij 
-\item \lstinline!mv ime.txt ../ime2.txt! - premješta datoteku \texttt{ime.txt} iz tekućeg direktorija u roditeljski direktorij \texttt{..} s novim imenom.
+\item \lstinline!mv naziv.txt ../naziv2.txt! - premješta datoteku \texttt{naziv.txt} iz tekućeg direktorija u roditeljski direktorij \texttt{..} s novim nazivom.
  \item \lstinline!mv -R dir1 dir2! - premješta direktorij i sve njegove elemente u drugi direktorij 
 \end{itemize}
 \end{primjer}
@@ -92,7 +92,7 @@ Isprobajte:
 \begin{itemize}
 \item Ispitajte koji je tekući direktorij (direktorij u kojem se nalazite). Naredba \texttt{pwd}.
 \item Promjenite tekući direktorij. Neka novi bude novokreirani direktorij. Naredba \texttt{cd}.
-\item Kreirajte direktorij \texttt{tmp} i u njemu nekoliko datoteka (npr. imena prva, druga i treca).
+\item Kreirajte direktorij \texttt{tmp} i u njemu nekoliko datoteka (npr. prva, druga i treca).
 \item Naredbom \texttt{tree} provjerite učinjeno.
 \item Izlistajte popis datoteka u tekućem direktoriju. Naredba \texttt{ls}. Ispitajte opcije naredbe \texttt{ls}: \texttt{ls -a, ls -l, ls -d, ls -t, ls .., ls .} i kombinacije npr. \texttt{ls -ltr}.
 \item Kopirajte datoteku \texttt{prva} u direktorij \texttt{vjezba3}. Naredba \texttt{cp}.
@@ -104,7 +104,10 @@ Isprobajte:
 \end{zadatak}
 \section{Putevi \textit{paths}}
 \begin{itemize}
- \item Prikažite svoj \texttt{search path}. Naredba \texttt{echo \$PATH\$}
+ \item Prikažite svoj \texttt{search path}. Naredba \texttt{echo \$PATH\$} 
+ 
+ \todo[inline]{Možda bi trebalo objasniti što je path. Koristio bih znak \$ samo na prije naziva varijable, ne poslije. Ne znam je li pojam "search" path najbolji.}
+ 
 %\item Eksportirajte neki path sa \texttt{export PATH=blabla} i pokušajte izlistati sadržaj direktorija.
 \item Koja je putanja do vašeg \texttt{home} direktorija. Naredba \texttt{pwd}. 
 \item Idite u \texttt{/var/tmp} direktorij.
