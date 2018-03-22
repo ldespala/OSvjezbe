@@ -1,8 +1,13 @@
 \section{Wildcards}
+
+Prilikom rada u ljusci mogu se koristiti posebni znakovi za zamjenu jednog ili više znakova u nazivu datoteke ili direktorija.
+
 \begin{center}
 \begin{tabular}{lll}
 \toprule
 znak & značenje & primjer\\
+
+
 \midrule
 \texttt{*} & zamjenjuju grupu znakova bilo koje veličine& \texttt{echo D*}\\
 \texttt{?} & zamjenjuje jedan znak&\texttt{echo ?ocument}\\
@@ -22,17 +27,17 @@ znak & značenje & primjer\\
  \end{itemize}
 \end{zadatak}
 
- \section{Naredbe za pretraživanje file systema}
+ \section{Naredbe za pretraživanje datotečnog sustava}
 \subsection*{Pretraživanje naredbom \texttt{find}}
-Sintaksa \texttt{find <path> -name <searchstring>}.
+Sintaksa: \texttt{find <path> -name <searchstring>}.
 \begin{center}
  
 \begin{tabularx}{\textwidth}{lXl}
 \toprule
 opcija & opis & primjer\\
 \midrule
-\texttt{-name} &pretraživanje po imenu&\lstinline!find /usr/bin/ -name 'v*'!\\ \addlinespace
-\texttt{-iname} &pretraživanje po imenu (\textit{case insensitive}) &\lstinline!find /usr/bin/ -iname 'v*'!\\ \addlinespace
+\texttt{-name} &pretraživanje po nazivu&\lstinline!find /usr/bin/ -name 'v*'!\\ \addlinespace
+\texttt{-iname} &pretraživanje po nazivu (\textit{case insensitive}) &\lstinline!find /usr/bin/ -iname 'v*'!\\ \addlinespace
 \texttt{-type} &pretraživanje po tipu&\lstinline!find / -type d -iname '*s'!\\  \addlinespace
 \texttt{-mtime} &pretraživanje datoteka modificiranih u zadanom vremenu&\lstinline!find /var/backups -mtime +5!\\ \addlinespace
 \texttt{-size} &pretraživanje po veličini u blokovima&\lstinline!find /var/backups -size +50!\\ \addlinespace
@@ -48,7 +53,7 @@ Naredba \texttt{locate} omogućava brzo pronalaženje indeksiranih datoteka u da
 
 \begin{zadatak} Riješite sljedeće zadatke koristeći \texttt{find} ili \texttt{locate} naredbu:
 \begin{enumerate}
- \item Nađite sve datoteke u \texttt{/usr/games} direktoriju čija imena počinju malim slovom.
+ \item Nađite sve datoteke u \texttt{/usr/games} direktoriju čiji nazivi počinju malim slovom.
  \item Nađite sve datoteke u \texttt{home} direktoriju kreirane danas.
  \item Nađite sve datoteke u \texttt{home} direktoriju starije od tjedan dana.
  \item Nađite lokaciju programa \texttt{rmdir}.
@@ -56,16 +61,11 @@ Naredba \texttt{locate} omogućava brzo pronalaženje indeksiranih datoteka u da
 
  \item Pronađite datoteku \texttt{.bash\_logout} naredbom \texttt{locate}.
 \item Pronađite sve datoteke u \texttt{home} direktoriju veće od 5MB. Naredba \texttt{find . -size +5000k}.
-\item Pronađite sve datoteke na file systemu koje sadrže u imenu riječ kernel. Naredba \texttt{find / -iname *kernel*}
+\item Pronađite sve datoteke u datotečnom sustavu koje u nazivu sadrže riječ \texttt{kernel}. Naredba \texttt{find / -iname *kernel*}
+
 \end{enumerate}
 \end{zadatak}
 \begin{comment}
-
-\vfill
-\begin{itemize}
-\renewcommand{\labelitemi}{\textbf{$\rightarrow$}}
-\item Popis svih pokrenutih naredbi eksportirajte u datoteku imena \texttt{prezime\_ime\_vj4.txt}. Uploadajte datoteku na \href{https://moodle.oss.unist.hr/course/view.php?id=133}{http://moodle.oss.unist.hr}.
-\end{itemize}
 
 \end{comment}
 
