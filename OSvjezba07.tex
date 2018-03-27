@@ -1,62 +1,72 @@
 \section{Dozvole i vlasništvo datoteka i direktorija (\textit{file permission})}
+\todo[inline]{Mislim da treba ići vlasništvo \textbf{nad} datotekama}
 \subsection*{Korisnici i grupe}
 Da bi se datoteke zaštitile od neovlaštenog pristupa, Linux dozvoljava postavljanje dozvola korištenja datoteka i direktorija. Dozvole se određuju za:
 \begin{itemize}
- \item vlasnika datoteke (\textbf{owner})
+\item vlasnika datoteke (\textbf{owner})
+\todo[inline]{u nastavku vježbe, nije korišten pojam vlasnik, nego user, odnosno korisnik. Treba ujednačiti}
 \item članove grupe kojoj je datoteka dodjeljena (\textbf{group})
 \item sve ostale korisnike (\textbf{other}).
 \end{itemize}
-\begin{primjer} Izvršite \texttt{ls -l}. Prvih 10 znakova označava dozvole korištenja datoteke, zatim je broj koji označava broj linkova, sljedeća polja su vlasnik, grupa, veličina, 
-vrijeme zadnje promjene i ime datoteke.
+\begin{primjer} Ispišite sadržaj tekućeg direktorija naredbom \texttt{ls -l}. Prvih 10 znakova označava dozvole korištenja datoteke, slijedi broj koji označava broj linkova, a nakon toga polja koja označavaju vlasnika, grupu, veličinu, 
+vrijeme zadnje promjene i naziv datoteke.
 
+\todo[inline]{kod kompajliranja poravnanje stupaca nije dobro}
 \lstinline!-rwxr-xr-x 1 os os 10103 2010-12-15 10:58 main !
 
 \lstinline!-rw-r--r-- 1 os os   248 2010-12-15 10:58 main.c!
 \end{primjer}
+
 U gornjim primjerima:
 \begin{itemize}
- \item Prvi znak \texttt{-} ili \texttt{d} označava tip datoteke (datoteka ili direktorij).
-\item Sljedeća tri znaka \texttt{rwx} ili \texttt{rw-} označavaju dozvole vlasnika datoteke.
-\item Sljedeća tri znaka \texttt{r-x} ili \texttt{r$--$} označavaju dozvole za grupu.
-\item Sljedeća tri znaka \texttt{r-x} ili \texttt{r$--$} označavaju dozvole za ostale korisnike.
+\item Prvi znak (\texttt{-} ili \texttt{d}) označava tip datoteke (datoteka ili direktorij).
+\item Sljedeća tri znaka (\texttt{rwx} ili \texttt{rw-}) označavaju dozvole vlasnika datoteke.
+\item Sljedeća tri znaka (\texttt{r-x} ili \texttt{r----}) označavaju dozvole za grupu.
+\item Sljedeća tri znaka (\texttt{r-x} ili \texttt{r----}) označavaju dozvole za ostale korisnike.
 \end{itemize}
+
 \textbf{Za datoteke:}\\
-Troslovna kombinacija slova \texttt{r}, \texttt{w} i \texttt{x} označavaju redom pravo čitanja, pisanja i izvršavanja datoteke.\\
+Troslovna kombinacija slova \texttt{r}, \texttt{w} i \texttt{x} označavaju redom: pravo čitanja, pisanja i izvršavanja datoteke.\\
+
 \textbf{Za direktorije:}
- \begin{itemize}
-\item 
-\texttt{r}: korisnik može vidjeti sadržaj direktorija (npr. sa \texttt{ls} naredbom).                                                                                                            
-\item \texttt{w}: korisnik može mijenjati sadržaj direktorija tj. kreirati, brisati i preimenovati datoteke u direktoriju.
-\item \texttt{x}: korisnik može koristit direktorij kao svoj tekući direktorij, tj. može ući u njega naredbom \texttt{cd}. 
-\end{itemize}
-\subsection*{Mijenjanje dozvola}
-Sintaksa \texttt{chmod <MODE> <ime\_datoteke>}
-\\
-\texttt{<MODE>} može biti napisan simbolički npr. \texttt{chmod go-rx kopija.c} ili oktalno npr. \texttt{chmod 700 kopija.c}.\\
-\subsubsection*{Simbolički}\texttt{chmod <TKO OPERATOR STO> <ime\_datoteke>}\\
-\texttt{<TKO>} može biti:
 \begin{itemize}
- \item \textbf{u} user
+\item \texttt{r}: korisnik može vidjeti sadržaj direktorija (npr. s naredbom \texttt{ls}).
+\item \texttt{w}: korisnik može mijenjati sadržaj direktorija tj. kreirati, brisati i preimenovati datoteke u direktoriju.
+\item \texttt{x}: korisnik može koristiti direktorij kao svoj tekući direktorij, tj. može ući u njega naredbom \texttt{cd}. 
+\end{itemize}
+
+\subsection*{Mijenjanje dozvola}
+Dozvole se mogu promijeniti naredbom \texttt{chmod}. Sintaksa:\\ \texttt{chmod <MODE> <naziv\_datoteke>}
+
+\texttt{<MODE>} može biti napisan simboličkom ili oktalnom sintaksom.
+\subsubsection*{Simbolička sintaksa}
+\texttt{chmod <KOME OPERATOR STO> <naziv\_datoteke>}\\
+
+\texttt{<KOME>} može biti:
+\todo[inline]{u staroj verziji pisalo je <TKO>, mislim da je bolje <KOME>}
+\begin{itemize}
+\item \textbf{u} korisnik
 \item \textbf{g} grupa
 \item \textbf{o} ostali
 \item \textbf{a} svi
 \end{itemize}
+
 \texttt{<OPERATOR>} može biti:
 \begin{itemize}
- \item \textbf{+} dodavanje prava
+\item \textbf{+} dodavanje prava
 \item \textbf{-} oduzimanje prava
 \item \textbf{=} skidanje svih prava i dodavanje specificiranih
 \end{itemize}
-\texttt{<STO>} može biti \textbf{r}, \texttt{w} i \textbf{x}.
 
+\texttt{<STO>} može biti \textbf{r}, \textbf{w} i \textbf{x}.
 \begin{primjer}{Primjer simboličkog načina pridjeljivanja prava korištenja:}
 \begin{itemize}
- \item \texttt{chmod u=rw,go=r kopija.c} - user dobija pravo pisanja i čitanja, a grupa i ostali samo čitanja.
+\item \texttt{chmod u=rw,go=r kopija.c} - korisnik dobija pravo pisanja i čitanja, a grupa i ostali samo čitanja.
 \item \texttt{chmod a+x main} - svi dobiju pravo izvršavanja uz već postojeća prava.
 \end{itemize}
 \end{primjer}
-\subsubsection*{Oktalno zapisivanje prava korištenja}
-\texttt{chmod <ZZZ> <ime\_datoteke>}\\
+\subsubsection*{Oktalna sintaksa}
+\texttt{chmod <ZZZ> <naziv\_datoteke>}\\
 Z - oktalna znamenka (znamenka između 0 i 7)
 %\begin{figure}
 \includegraphics[scale=0.3]{07_File_perm_03.png}
@@ -64,37 +74,37 @@ Z - oktalna znamenka (znamenka između 0 i 7)
 
 \begin{primjer}Primjer oktalnog načina pridjeljivanja prava korištenja:
 \begin{itemize}
- \item \texttt{chmod 644 kopija.c} - user dobija pravo pisanja i čitanja, a grupa i ostali samo čitanja.
+ \item \texttt{chmod 644 kopija.c} - korisnik dobija pravo pisanja i čitanja, a grupa i ostali samo čitanja.
 \item \texttt{chmod 755 main} - svi dobiju pravo izvršavanja uz već postojeća prava.
 \end{itemize}
 \end{primjer}
+
 \begin{zadatak} Nakon svake izvršene naredbe u primjerima i zadacima, izvršite naredbu \texttt{ls -l} kako bi vidjeli promjene.
 \begin{itemize}
-\item U direktoriju \texttt{vjezba7} kreirajte datoteku main.c u kojoj će biti neki c program.
+\item Kreirajte datoteku \texttt{main.c} s jednostavnim programom u c-u.
 \item Iskompajlirajte ga: \texttt{gcc -o main main.c} 
 \item Napravite kopiju datoteke \texttt{main.c}. Neka se kopija zove \texttt{kopija.c}.
 \end{itemize}
 \end{zadatak}
+
 \begin{zadatak}
 Datoteci \texttt{kopija.c} dodijelite takva prava da samo \texttt{user} može mijenjati datoteku. 
 \end{zadatak}
+
 \begin{zadatak}
-Datoteci \texttt{main} dodijelite takva prava da samo \texttt{user} i pripadajuća grupa mogu izvršavati datoteku tj. program \texttt{main}. 
-\end{zadatak}
-\begin{zadatak}
-Datoteci \texttt{main} skinite pravo mijenjanja za \texttt{usera}. Pokušajte pokrenuti program \texttt{./main}. 
-\end{zadatak}
-\begin{zadatak}
-Kreirajte direktorij \texttt{test} i u njega kopirajte datoteku \texttt{main}. Direktoriju \texttt{test} skinite pravo pisanja \texttt{w}. 
-Kopirajte datoteku \texttt{main.c} u njega. Kakav je rezultat i zašto? 
+	Zabranite svima čitanje, pisanje i izvršavanje datoteke \texttt{main.c}. Pokušajte prikazati njen sadržaj na ekranu.
 \end{zadatak}
 
-\begin{comment}
+\begin{zadatak}
+Nad datotekom \texttt{main} postavite takva prava da samo korisnik i pripadajuća grupa mogu izvršavati datoteku tj. program \texttt{main}.
+\end{zadatak}
 
-\vfill
-\begin{itemize}
-\renewcommand{\labelitemi}{\textbf{$\rightarrow$}}
-\item Popis svih pokrenutih naredbi eksportirajte u datoteku imena \texttt{prezime\_ime\_vj7.txt}. Uploadajte datoteku na \href{https://moodle.oss.unist.hr/course/view.php?id=133}{http://moodle.oss.unist.hr}.
-\end{itemize}
+\begin{zadatak}
+Datoteci \texttt{main} skinite pravo mijenjanja za korisnika. Pokušajte pokrenuti program \texttt{./main}.
+\end{zadatak}
+\todo[inline]{Korisniku se skidaju prava, a ne datoteci. Možda treba drugačije formulirati}
 
-\end{comment}
+\begin{zadatak}
+Kreirajte direktorij \texttt{test} i u njega kopirajte datoteku \texttt{main}. Direktoriju \texttt{test} skinite pravo pisanja \texttt{w}. Kopirajte datoteku \texttt{main.c} u njega. Kakav je rezultat i zašto? 
+\end{zadatak}
+
