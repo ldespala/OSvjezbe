@@ -1,51 +1,55 @@
 \section*{Pipeline}
 
-\textbf{Pipe} ili \textbf{pipeline} je niz od dvije ili više naredbi odvojenih vertikalnom crtom \lstinline!|!. Standardni output prve naredbe, standardni je input druge naredbe.
+\textbf{Pipe} ili \textbf{pipeline} je niz od dvije ili više naredbi odvojenih vertikalnom crtom \lstinline!|!. Standardni izlat prve naredbe, standardni je ulaz druge naredbe.
+
+\todo[inline]{Smislit prijevod za pipeline. Cjevovod, kanal?}
 
 \begin{zadatak} Izvršite sljedeće linije
 \begin{itemize}
 \item \lstinline!ls | wc -l!
 \item \lstinline!ls | grep dat!
 \item \lstinline!ls | tac! - ispis u obratnom redoslijedu (pogledati \texttt{man tac})
-%\item Kombinirajte 2 datoteke u jednu cat *.dat > sve.dat
+
 %%\item U jednoj liniji ispišite datum i sve logirane usere i spremite u novu datoteku users nakon sto ste prebrojali linije 
 %(date ; who) | nl > users
 \end{itemize}
 \end{zadatak}
 \begin{zadatak} 
 U direktoriju kreirajte direktorij \texttt{etc}.
+\todo[inline]{Ja bih umjesto riječi kreirajte koristio napravite. Treba ujednačiti u cijeloj skripti}
 
 \begin{enumerate}
 \item U direktoriju \texttt{etc} kreirajte datoteku sa nastavkom \texttt{.txt} u kojoj su zapisane datoteke iz direktorija \texttt{/etc} koje počinju sa slovom \texttt{a} (\texttt{ls -d /etc/a*}). Uočite razliku između \texttt{etc} i \texttt{/etc}. Koristite preusmjeravanje \texttt{>} u datoteku. 
 \item U direktoriju \texttt{etc} kreirajte datoteku sa nastavkom \texttt{.dat} u kojoj su zapisane datoteke iz direktorija \texttt{/etc} koje počinju sa slovom \texttt{a} u obratnom redoslijedu (\texttt{ls -dr /etc/a*}). 
-\end{enumerate}
-\end{zadatak}
 
-
-\begin{itemize}
-\item \lstinline!ls | grep dat!
-\item Iz datoteke \texttt{/etc/passwd} izdvojite prvi i šesti stupac koji se odnose na user-a \texttt{mail}. Kombinirajte \texttt{grep} i \texttt{cut}. 
+%\begin{itemize}
+\item Isprobajte: \lstinline!ls | grep dat!. Umjesto na terminal, upišite izlaz u datoteku \texttt{listing}.
+\item Iz datoteke \texttt{/etc/passwd} izdvojite prvi i šesti stupac koji se odnose na korisnikaa \texttt{mail}. Kombinirajte naredbe \texttt{grep} i \texttt{cut}.
 \item Izlistajte datoteke i direktorije u tekućem direktoriju sortirane po veličini. Kombinirajte \lstinline!ls -l! i \lstinline!sort -n -k 5! (sortiranje po petom stupcu).
 \item Izlistajte datoteke (samo datoteke) u tekućem direktoriju sortirane po veličini. Za pronalaženje datoteka koristite \lstinline!find . -type f -ls!.
-% grep mail /etc/passwd | cut -f 1,6 -d :
-%\item Iz datoteke /etc/shadow izdvojite stupac koji prikazuje enkriptirani password usera. (\texttt{sudo})
-%\item Kombinirajte 2 datoteke u jednu cat *.dat > sve.dat
+
+\item Iz datoteke \texttt{/etc/shadow} izdvojite stupac koji prikazuje enkriptiranu lozinku za korisnika \texttt{student} (lozinka se nalazi u drugom polju; prema potrebi koristite naredbu \texttt{sudo})
+
+\item Snimite tri rečenice u tri različite datoteke naziva \texttt{prva}, \texttt{druga} i \texttt{treca}
+\item Ispišite na terminal spojeni sadržaj sve tri datoteke \lstinline!cat prva druga treca!
+\item Spojite sadržaj svih datoteka u datoteku naziva \texttt{prva\_druga\_treca}
+\item Spojite sadržaj svih datoteka sortiran po abecedi u datoteku naziva \texttt{prva\_druga\_treca\_sorted}
 %%\item U jednoj liniji ispišite datum i sve logirane usere i spremite u novu datoteku users nakon sto ste prebrojali linije 
 %(date ; who) | nl > users
-\end{itemize}
+\end{enumerate}
+\end{zadatak}
 \section{Filteri}
 \textbf{Filter} je naredba koja čita sa standardnog ulaza (\texttt{stdin}), trensformira ulaz i piše na standardni output. Može biti srednji dio pipelinea.
 
 \begin{primjer} Isprobajte sljedeće naredbe
 \begin{itemize}
-\item \texttt{ls | grep .txt | wc -l }
-\item \texttt{cat etc/etc.dat etc/etc.txt | sort -n -k 5 | uniq > finaletc.list}  (\texttt{cat} spaja datoteke (konkatenacija), 
-one se zatim sortiraju po petom polju i sa uniq se izbacuju duplikati, te se rezultat zapiše u finaletc.list)
+\item \texttt{ls | grep prva | wc -l }
+\item \texttt{cat etc/etc.dat etc/etc.txt | sort -n -k 5 | uniq > finaletc.list}  (\texttt{cat} spaja datoteke (konkatenacija), one se zatim sortiraju po petom polju i sa uniq se izbacuju duplikati, te se rezultat zapiše u \texttt{finaletc.list})
 \end{itemize}
 \end{primjer}
 
 \begin{zadatak} 
-Iz datoteke \texttt{/etc/passwd} izdvojite sve retke u kojima je shell \texttt{bash} (stupac 7) (naredba \texttt{grep}). Ispišite samo prvi i sedmi stupac tj. \texttt{username} i \texttt{shell} (naredba \texttt{cut}) i sortirajte po username-u (naredba \texttt{sort}). 
+Koristeci naredbu \texttt{grep} iz datoteke \texttt{/etc/passwd} izdvojite sve retke u kojima je ljuska \texttt{bash} (stupac 7). Ispišite samo prvi i sedmi stupac tj. \texttt{username} i \texttt{shell} (naredba \texttt{cut}) i sortirajte po korisničkom imenu (naredba \texttt{sort}). 
 \end{zadatak}
 
 \begin{comment}
