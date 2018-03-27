@@ -1,5 +1,9 @@
 \section{Redirekcija \lstinline!>!, \lstinline!>>!, \lstinline!<!}
 
+\todo[inline]{usmjeravanje, preusmjeravanje?}
+
+Tradicionalni uređaji za ulaz i izlaz na računalima su tipkovnica i monitor. U Linuxu postoji razina apstrakcije koja omogućava korištenje bilo kojeg uređaja (odnosno datoteke) kao ulaznog ili izlaznog. Korištenjem operatora \lstinline!>!, \lstinline!>>!, \lstinline!<! ulaz i izlaz mogu se proizvoljno preusmjeriti. U dosadašnjim primjerima, kao ulazni uređaj korištena je tipkovnica, a izlaz programa ispisivan je u terminal (na ekran). U ovoj vježbi isprobat ćemo usmjeravanje sadržaja datoteke na ulaz programa, kao i usmjeravanje izlaza iz programa u datoteku.
+
 \begin{tabularx}{\textwidth}{lXl}
 \hline
 operator & opis & primjer\\
@@ -17,7 +21,7 @@ operator & opis & primjer\\
  \item \lstinline!/dev/null! je specijalni file u koji se mogu preusmjeriti neželjeni podaci. \lstinline!/dev/null! je uvijek prazan.\\
 \end{itemize}
 
-\begin{zadatak} Redirekcija:
+\begin{zadatak} Redirekcija: 
 \begin{enumerate}
 \item 
 Izvršite sljedeće naredbe:
