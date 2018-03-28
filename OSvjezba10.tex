@@ -11,13 +11,13 @@ Proces je program u izvršavanju zajedno sa svojim virtualnim adresnim prostorom
  \item itd.
 \end{itemize}
 \subsection*{Pokretanje procesa}
-Svaki proces je pokrenut od strane nekog drugog procesa. Jedini izuzetak je \textbf{init} proces koji pokreće kernel i ima PID 1. Sam \texttt{shell} je proces i njegov \texttt{PID} se može dobiti sa: \texttt{echo \$\$}
+Svaki proces je pokrenut od strane nekog drugog procesa. Jedini izuzetak je \textbf{init} proces koji pokreće kernel i ima PID 1. Sam \texttt{shell} je proces i njegov \texttt{PID} se može dobiti s: \texttt{echo \$\$}
 
-Iz shella se procesi pokreću izvršavanjem komandne linije. Npr. u komandnoj liniji napišite \texttt{bash}. Otvoriti će se subshell. 
+Iz ljuske se procesi pokreću izvršavanjem komandne linije. Npr. u komandnoj liniji napišite \texttt{bash}. Otvoriti će se subshell. 
 
 \begin{zadatak} Izvršite sljedeće akcije:
 \begin{itemize} 
- \item Naći \texttt{PID} tekućeg shella. Izvršiti naredbu \texttt{history}.
+ \item Naći \texttt{PID} aktivne ljuske. Izvršiti naredbu \texttt{history}.
  \item Pokrenite novi \texttt{bash} shell
  \item Naći PID novootvorenog subshella. Izvršiti naredbu \texttt{history}. Što zaključujete?
  \item Izaći iz novootvorenog shella naredbom \texttt{exit}. Provjeriti \texttt{PID} shella u kojem se nalazite. 
@@ -30,29 +30,29 @@ Iz shella se procesi pokreću izvršavanjem komandne linije. Npr. u komandnoj li
 
 Procesi se mogu izvršavati na dva načina:
 \begin{itemize}
- \item \textbf{foreground} procesi 
- \item \textbf{background} procesi
+	\item procesi u prednjem planu (eng. \textit{foreground})
+	\item procesi u pozadini (eng. \textit{background})
 \end{itemize}
-Kada se proces izvršava kao foreground proces, shell koji je pokrenuo proces treba čekati da proces završi kako bi se mogli pokretati 
-ostali procesi. S druge strane, kada se proces izvršava kao background proces, shell ne mora čekati završetak procesa (odzivni znak se 
-odmah pojavi u shellu). Background procesi se pokreću tako da se na kraj komandne linije doda znak ampersand (\texttt{\&}).
+\todo[inline]{Je li ovakav prijevod OK?}
+Kada se proces izvršava u prednjem planu, ljuska koja ga je pokrenula treba čekati da proces završi kako bi se mogli pokretati ostali procesi. S druge strane, kada se proces izvršava kao pozadinski, ljuska ne mora čekati završetak procesa (odzivni znak se odmah pojavi). Pozadinski procesi se pokreću tako da se na kraj komandne linije doda znak ampersand (\texttt{\&}).
 
-Prebacivanje foreground u background:
+Prebacivanje procesa iz prednjeg plana u pozadinu:
 \begin{enumerate}
  \item Suspendirati proces (Ctrl+z)
  \item Unijeti naredbu \texttt{bg}
 \end{enumerate}
 
 \begin{zadatak}
-Pokreniti \texttt{gedit} kao foreground proces i prebaciti ga u background.                                                                                             
-\end{zadatak}
-\begin{zadatak}Pokrenuti naredbu \texttt{jobs} kojom se ispisuju svi background ili suspendirani procesi.
+	Pokreniti \texttt{gedit} i prebaciti ga u pozadinu.
 \end{zadatak}
 
+\begin{zadatak}
+	Pokrenuti naredbu \texttt{jobs} kojom se ispisuju svi pozadinski ili suspendirani procesi.
+\end{zadatak}
 
 \subsection*{Nadgledanje procesa}
 \begin{itemize}
- \item \texttt{ps} - ispisuje sve procese (process status). Neke opcije: 
+ \item \texttt{ps} - ispisuje sve procese \textit{(process status)}. Neke opcije: 
 \begin{itemize}
  \item \textbf{a} - svi procesi povezani sa terminalom
  \item \textbf{x} - svi ostali procesi
@@ -69,7 +69,7 @@ Najčešći oblik korištenja \textbf{ps} naredbe je \texttt{ps aux} ili \texttt
 \item \texttt{top} - ispisuje trenutno pokrenute procese i informacije o memoriji i CPU.
 \end{itemize}
 
-\begin{zadatak} Pokrenite neki program (npr. unijeti \texttt{gedit test.txt}). Nađite PID i PPID procesa.
+\begin{zadatak} Pokrenite neki program (npr. \texttt{gedit test.txt}). Nađite PID i PPID procesa.
 \end{zadatak}
 
 \subsection*{Završetak procesa}
@@ -97,12 +97,4 @@ Predefinirani signal je 15.
 \begin{zadatak} Ubijte \texttt{gedit} iz komandne linije.
 \end{zadatak}
 
-\begin{comment}
-
-\vfill
-\begin{itemize}
-\renewcommand{\labelitemi}{\textbf{$\rightarrow$}}
-\item Popis svih pokrenutih naredbi eksportirajte u datoteku imena \texttt{prezime\_ime\_vj10.txt}. Uploadajte datoteku na \href{https://moodle.oss.unist.hr/course/view.php?id=133}{http://moodle.oss.unist.hr}.
-\end{itemize}
-
-\end{comment}
+\todo[inline]{mislim da bi ovu vježbu trebalo proširiti s dodatnim zadatcima. Ne trebaju biti vezani za procese.}
