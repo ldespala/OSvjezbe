@@ -36,7 +36,7 @@ Sintaksa: \texttt{test <IZRAZ>}
 \texttt{<IZRAZ>} je kombinacija opcija i vrijednosti.
 \begin{lstlisting}
 #!/bin/bash
-# test da li /etc/passwd postoji
+# provjera postoji li datoteka /etc/passwd
 
 if test -e /etc/passwd; then
   echo "Alright man..." >&2
@@ -50,7 +50,7 @@ Uglata zagrada \texttt{[} nije dio \texttt{if} naredbe.\\.
 Sintaksa je \texttt{[ <IZRAZ> ]} (uočite razmak nakon otvorene uglate zagrade).
 \begin{lstlisting}
 #!/bin/bash
-# test da li /etc/passwd postoji
+# provjera postoji li datoteka /etc/passwd
 
 if [ -e /etc/passwd ]; then
   echo "Alright man..." >&2
@@ -60,19 +60,20 @@ else
 fi
 \end{lstlisting}
 
-Za \texttt{test-commands} pogledajte link \href{http://www.ibm.com/developerworks/library/l-bash-test/index.html}{Bash test and comparison functions}. Neki od test naredbi su dani u 
+Za parametre naredbe \texttt{test} pogledajte link \href{http://www.ibm.com/developerworks/library/l-bash-test/index.html}{Bash test and comparison functions} ili korisničke upute \texttt{man test}. Neki od parametara naredbe \texttt{test} dani su u 
 sljedećoj tablici:\\
+\todo[inline]{Izbaciti vanjski link? Dodao sam da sve piše u man test}
 \begin{longtable}{ll}
   \hline
   \multicolumn{2}{c}{Izrazi za testiranje statusa datoteke} \\
   \hline
-  \texttt{-f <file>} & file je obična datoteka \\
-  \texttt{-d <file>} & file je direktorij \\
-  \texttt{-r <file>} & file ima pravo čitanja \\
-  \texttt{-w <file>} & file ima pravo pisanja \\
-  \texttt{-x <file>} & file ima pravo izvršavanja \\
-  \texttt{-s <file>} & file nije prazan (ima nenula duljinu) \\
-  \texttt{-e <file>} & file postoji \\
+  \texttt{-f <file>} & \texttt{file} je obična datoteka \\
+  \texttt{-d <file>} & \texttt{file} je direktorij \\
+  \texttt{-r <file>} & \texttt{file} ima pravo čitanja \\
+  \texttt{-w <file>} & \texttt{file} ima pravo pisanja \\
+  \texttt{-x <file>} & \texttt{file} ima pravo izvršavanja \\
+  \texttt{-s <file>} & \texttt{file} nije prazan (ima nenula duljinu) \\
+  \texttt{-e <file>} & \texttt{file} postoji \\
   \hline
   \multicolumn{2}{c}{Izrazi za testiranje stringova} \\
   \hline
@@ -104,30 +105,30 @@ else
 fi
 \end{lstlisting}
 \end{primjer}
-\begin{zadatak} Modificirajte zadatak iz prethodne vježbe (osnovne aritmetičke operacije s parametrima) tako da se parametri zbroje ako je prvi parametar manji od drugog parametra, 
-pomnože ako su jednaki, a oduzmu ako je prvi parametar veći od drugog parametra.
+\begin{zadatak} Izmijenite zadatak iz prethodne vježbe (osnovne aritmetičke operacije s parametrima) tako da se parametri zbroje ako je prvi parametar manji od drugog parametra, pomnože ako su jednaki, a oduzmu ako je prvi parametar veći od drugog parametra. Skriptu nazovite \texttt{zad01.sh}.
 \end{zadatak}
 \subsection*{Naredbe za ponavljanje}
 
- \subsubsection*{Naredba \texttt{while}}
+\subsubsection*{Naredba \texttt{while}}
 Sintaksa:
 \begin{lstlisting}
-while expression is true
+while <expression is true>
 do
     command(s)
 done
 \end{lstlisting}
 
-\begin{primjer} Proučite i izvršite!
+\begin{zadatak} Proučite i izvršite (naziv skripte neka bude \texttt{zad02.sh}).
 \begin{lstlisting}
 #!/bin/bash
 count=0
 max=10
-while [ $count != $max ]; do count=`expr $count + 1`
+while [ $count != $max ]; do 
+	count=`expr $count + 1`
     echo "$count"
 done
 \end{lstlisting}
-\end{primjer}
+\end{zadatak}
 
 \subsubsection*{Naredba \texttt{for}}
 Sintaksa:
@@ -138,7 +139,7 @@ do
 done
 \end{lstlisting}
 
-\begin{primjer} Proučite i izvršite!
+\begin{zadatak} Proučite i izvršite (nazivi: \texttt{zad03-01.sh} do \texttt{zad03-05.sh}).
 \begin{enumerate}
  \item
 \begin{lstlisting}
@@ -188,7 +189,7 @@ done
 echo $count
 \end{lstlisting}
 \end{enumerate}
-\end{primjer}
+\end{zadatak}
 
 
 \begin{comment}
