@@ -1,8 +1,17 @@
 \section{Shell skripte}
 
+\todo[inline]{Skripte u ljusci? Bash skripte? Ili samo skripte?}
+
 %\subsection*{Što su shell skripte i čemu služe?}
+
+\todo[inline]{Uvod cemo malo proširiti/preraditi. U komentaru je par novih misli.}
+
+% Kombinacije naredbi koje se često ponavljaju prilikom rada u ljusci mogu se upisati u posebno pripremljene datoteke koje zovemo skripta. Na taj način može se automatizirati uobičajene radnje i učiniti rad na računalu bržim i efikasnijim. Skripte se koriste kod administracije računala, ... Skripta je u osnovi datoteka s nizom naredbi i parametara, koje se izvršavaju na isti način kao što bi se izvršile da su upisane izravno u terminalu. U Linuxu se mogu koristiti razne ljuske, a većina njih ima podršku za varijable, petlje, uvjetna grananja i slično. Danas se najviše koriste ljuske Bash i Bourne (?).
+
+
 \textbf{Skripta} je datoteka koja sadrži naredbe shella. Shell čita datoteku i izvršava naredbu po naredbu kao da je pisana putem tipkovnice. Na taj način ne moramo pamtiti naredbe, poslovi se mogu izvršavati u određeno vrijeme, ne gubimo vrijeme rješavajući problem putem GUI-a.
 
+\todo[inline]{Ovo treba pregledati i možda ubaciti neke primjere kao prilog u skripti, mislim da je to bolje nego vanjski linkovi}
 \begin{primjer} Primjeri shell skripti: 
 \begin{itemize}
 \item  naći sve izvršne programe u PATH-u koji odgovaraju nekom \textit{patternu} \url{http://user.it.uu.se/~matkin/documents/shell/#Rename_files}
@@ -18,13 +27,14 @@ itd.
 \subsection*{Pisanje shell skripte}
 Koraci:
 \begin{enumerate}
- \item Napisati skriptu npr. \texttt{script1} u nekom editoru (npr. \texttt{gedit}). U prvom redku napisati \lstinline!#!!/bin/bash.
-\item Dodijeliti pravo izvršavanja (\texttt{x}) skripti npr. \lstinline!chmod 755 script1!
-\item Smjestiti je negdje gdje je shell može naći npr. u tekući direktorij 
-\item Izvršiti je npr. \texttt{./script1}
+\item Pokrenuti neki editor (npr. \texttt{gedit} ili \texttt{nano})
+\item U prvom retku napisati \lstinline!#!\texttt{!/bin/bash}
+\item Upisati naredbe i spremiti skriptu pod nekim nazivom (npr. \texttt{skripta.sh}). Nastavak datoteke nije obavezan, ali \texttt{sh} je uobičajen.
+\item Skripti treba dodijeliti pravo izvršavanja (\texttt{x}) npr. \lstinline!chmod 755 script.sh!
+\item Skripta se pokreće tako da se upiše apsolutna ili skraćena putanja do nje, npr. \texttt{./script.sh}
 \end{enumerate}
 
-\begin{zadatak}Napisati Hello world! skriptu i izvršiti je.
+\begin{zadatak}Napisati skriptu \texttt{Hello world} i izvršiti je.
 \begin{lstlisting}
 #!/bin/bash 
 echo "Hello world!"
@@ -33,61 +43,78 @@ echo "Hello world!"
 \subsection*{Elementi shell skripte}
 \begin{itemize}
  \item \textbf{Varijable: } definiraju se ovako: \lstinline!X="Hello"!, a vrijednost se dohvaća sa \lstinline!$X!. U varijablu možemo spremiti i vrijednost nekog aritmetičkog izraza koristeći dvostruke okrugle zagrade npr.~\lstinline!X=$(($Y+$Z))!
-\item \textbf{Standardne (environment) varijable: } su varijable shella (npr. \lstinline!$PATH!, \lstinline!$USER!, \lstinline!$PWD! ili \lstinline!$OLD_PWD!) koje možete pogledati naredbom \texttt{env}.
+\item \textbf{Standardne (environment) varijable: } su varijable shella (npr. \lstinline!$PATH!, \lstinline!$USER!, \lstinline!$PWD! ili \lstinline!$OLD_PWD!) koje se mogu pregledati naredbom \texttt{env}.
 \item \textbf{Parametri tj. argumenti komandne linije} označeni su sa \lstinline!$1!, \lstinline!$2!, \lstinline!$3! itd.
 \begin{itemize}
  \item \lstinline!$@! je \lstinline!"$1"! \lstinline!"$2"! \lstinline!"$3"!
 \item \lstinline!$*! je \lstinline!"$1 $2 $3"!
-\item \lstinline!$\#! je broj parametara
+\item \lstinline!$#! je broj parametara
 \end{itemize}
 
 \end{itemize}
 
 \begin{zadatak}
-Napišite (i proučite) skriptu \texttt{prva} i izvršite je sa \texttt{./prva jen dva}. Što skripta radi?
+Napišite (i proučite) skriptu naziva \texttt{prva} i izvršite je s parametrima: \texttt{./prva jen dva}. Što skripta radi?
 \begin{lstlisting}
 #!/bin/bash
-echo Ime skripte: $0
+echo Naziv skripte: $0
 echo Prvi parametar: $1
 echo Drugi parametar: $2
 echo Broj parametara: $#
 \end{lstlisting}
 \end{zadatak}
+
 \subsection*{Praznine}
 Znak jednakosti (\lstinline!=!) koristi se za pridjeljivanje vrijednosti i za usporedbu.
 \begin{itemize}
 \item 
-Kod pridjeljivanja vrijednosti znak \lstinline!=! nije omeđen prazninama: \lstinline!val=33! ili \lstinline!str="Neki string"!.
-\item Kod uspoređivanja je znak \lstinline!=! omeđen prazninama: \lstinline!if [ $str = "Nekistring" ]; then echo "je"; else echo "nije"; fi!
+Kod pridjeljivanja vrijednosti znak \lstinline!=! nije omeđen prazninama:\\ 
+\lstinline!val=33! \\
+\lstinline!str="Neki string"!
+
+\item Kod uspoređivanja, znak \texttt{=} je omeđen prazninama:
+\begin{lstlisting}
+if [ $str = "Nekistring" ]
+	then echo "je"
+else 
+	echo "nije"
+fi
+\end{lstlisting}
 \end{itemize}
 
-\subsection*{Jednostruki vs. dvostruki navodnici}
-\paragraph{strong quoting} Unutar jednostrukih navodnika ništa se ne interpretira. Primjer: \lstinline!echo 'Your PATH is: $PATH' ! ispisati će se \lstinline!Your PATH is: $PATH!. 
+\subsection*{Jednostruki i dvostruki navodnici}
+\todo[inline] {Ovo trebamo dobro rastrest i prevest na hrvatski (strong i weak, wildcardovi i slično). }
+
+\paragraph{strong quoting} Unutar jednostrukih navodnika ništa se ne interpretira. Primjer: \\ \lstinline!echo 'Your PATH is: $PATH' ! \\ 
+ispisat će se: \\
+\lstinline!Your PATH is: $PATH!. \\
 Znakovi nemaju posebno značenje
+
 \paragraph{weak quoting} Unutar dvostukih navodnika interpretira se većina znakova, ali neki znakovi imaju posebno značenje i njih se ne interpretira:
-\begin{itemize}
- \item \textit{space} ne interpretira kao separator riječi npr.
- 
-\begin{itemize}
-\item 
- \texttt{touch prva datoteka.dat} kreirati će (ili promijeniti vrijeme pristupa) dvije datoteke: \texttt{prva} i \texttt{datoteka.dat} 
- 
-\item  \texttt{touch "prva datoteka.dat"} kreirati će (ili promijeniti vrijeme pristupa) datoteku: \texttt{prva datoteka.dat}                                                                                                                       \end{itemize}
 
+\begin{itemize}
+\item razmak se ne interpretira kao separator riječi, npr.
+ 
+\begin{itemize}
+\item  \texttt{touch "prva datoteka.dat"} kreirat će (ili promijeniti vrijeme pristupa) datoteku naziva: \texttt{prva datoteka.dat}
 
- \item znakove unutar jednostrukih navodnika ne interpretira kao "strong quoting" npr.
+\item \texttt{touch prva datoteka.dat} kreirat će (ili promijeniti vrijeme pristupa) dvije datoteke: \texttt{prva} i \texttt{datoteka.dat}
+\end{itemize}
+
+\item znakove unutar jednostrukih navodnika ne interpretira kao "strong quoting" npr.
  
-\lstinline!echo "'$PATH'"! će ispisati cijeli \textit{path} 
- \item wildcardove ne interpretira npr.
+\lstinline!echo "'$PATH'"! ispisat će cijeli \textit{path} 
+\item wildcardove ne interpretira npr.
  
- \lstinline!ls -l "prva*"! će ispisati poruku: \texttt{ls: cannot access prva*: No such file or directory}
+\lstinline!ls -l "prva*"! će ispisati poruku: \texttt{ls: cannot access prva*: No such file or directory}
  \item ekspanziju pathnamea i varijabli
  
-\lstinline!echo "Koristimo $TERM"! će ispisati \texttt{Koristimo xterm}, odnosno ime terminala kojeg koristimo.
+\lstinline!echo "Koristimo $TERM"! će ispisati \texttt{Koristimo xterm}, odnosno naziv aktivnog terminala.
 
-\item zamjene za komandu (\textit{command substitution}) npr. 
+\item zamjene za naredbu (\textit{command substitution}) npr. 
 \lstinline!echo "`ls`"! će izvršiti naredbu \texttt{ls} 
 \end{itemize}
+
 \begin{zadatak}
 Napišite (i proučite) skriptu \texttt{druga} i izvršite je. Što skripta radi?
 \begin{lstlisting}
@@ -117,13 +144,3 @@ echo $(($X%$Y))
 \begin{zadatak}
 Modificirajte skriptu tako da vrši osnovne aritmetičke operacije nad argumentima komandne linije.
 \end{zadatak}
-
-\begin{comment}
-
-\vfill
-\begin{itemize}
-\renewcommand{\labelitemi}{\textbf{$\rightarrow$}}
-\item Popis svih pokrenutih naredbi zajedno sa zadnjim zadatkom eksportirajte u datoteku imena \texttt{prezime\_ime\_vj8.txt}. Uploadajte datoteku na \href{https://moodle.oss.unist.hr/course/view.php?id=133}{http://moodle.oss.unist.hr}.
-\end{itemize}
-
-\end{comment}
