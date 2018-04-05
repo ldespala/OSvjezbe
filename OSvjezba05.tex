@@ -2,6 +2,8 @@
 
 \todo[inline]{usmjeravanje, preusmjeravanje?}
 
+\todo[inline]{prevest delimiter: znak za razdvajanje?}
+
 Tradicionalni uređaji za ulaz i izlaz na računalima su tipkovnica i monitor. U Linuxu postoji razina apstrakcije koja omogućava korištenje bilo kojeg uređaja (odnosno datoteke) kao ulaznog ili izlaznog. Korištenjem operatora \lstinline!>!, \lstinline!>>!, \lstinline!<! ulaz i izlaz mogu se proizvoljno preusmjeriti. U dosadašnjim primjerima, kao ulazni uređaj korištena je tipkovnica, a izlaz programa ispisivan je u terminal (na ekran). U ovoj vježbi isprobat ćemo usmjeravanje sadržaja datoteke na ulaz programa, kao i usmjeravanje izlaza iz programa u datoteku.
 
 \begin{tabularx}{\textwidth}{lXl}
@@ -74,7 +76,7 @@ tail & ispisuje zadnjih $n$ linija datoteke (default je 10) & \lstinline!tail et
 \item Ispisati sortiranu datoteku \texttt{/etc/passwd} koristeći naredbu \texttt{sort}.
 \item Popis korisničkih imena iz datoteke \texttt{/etc/passwd} upisati u datoteku \texttt{users}
 \item Sadržaj datoteke \texttt{users} složen po abecedi upisati u datoteku \texttt{users\_sorted}
-\item Iz datoteke \texttt{/etc/passwd} ispisati samo redak koji sadrži riječ \texttt{root}. Koristiti naredbu \texttt{grep}
+\item Iz datoteke \texttt{/etc/passwd} ispisati retke koji sadrže riječ \texttt{root}. Koristiti naredbu \texttt{grep}
 \item Sve retke iz datoteke \texttt{/var/log/syslog} koji sadrže riječ \texttt{error} upisati u datoteku \texttt{errors}.
 \item Uz pomoć programa \texttt{wc} prebrojite koliko redaka sadrži datoteka \texttt{errors}
 \item Ispisati prvih 20 linija \texttt{/etc/passwd} datoteke. Koristiti naredbu \texttt{head}.
