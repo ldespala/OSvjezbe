@@ -4,14 +4,10 @@
 Ova vježba radi se na udaljenom poslužitelju, koristeći program Putty koji komunicira s poslužiteljem na adresi 192.168.4.4 koristeći SSH protokol.
 
 \subsection*{Spajanje na poslužitelj}
-Prilikom spajanja na poslužitelj, studenti se spajaju koristeći korisničko ime i lozinku u sljedećem obliku: 
-
-GRUPA*100 + BROJ\_RACUNALA
-
-Primjer: student iz druge grupe koji sjedi na šestom računalu od ulaznih vrata u smjeru kazaljke na satu koristit će korisničko ime i lozinku 206.
+Prilikom spajanja na poslužitelj, studenti se spajaju koristeći korisničko ime i lozinku koje dobiju od nastavnika. 
 
 \subsection*{Rad na poslužitelju}
-Svaki korisnik na poslužitelju ima svoj direktorij (/home/username, odnosno \textasciitilde) i sve radnje treba obavljati unutar njega. Student ne bi trebao napuštati svoj direktorij, a u niti jednoj situaciji nije dozvoljeno pristupati tuđim podatcima. Općenito nije dozvoljeno na bilo koji način ugrožavati sigurnost ili remetiti rad sustava, te pristupati datotekama izvan vlastitog direktorija ili direktorija /materijali.
+Svaki korisnik na poslužitelju ima svoj direktorij (\texttt{/home/username}, odnosno \textasciitilde) i sve radnje treba obavljati unutar njega. Student ne bi trebao napuštati svoj direktorij, a u niti jednoj situaciji nije dozvoljeno pristupati tuđim podatcima. Općenito nije dozvoljeno na bilo koji način ugrožavati sigurnost ili remetiti rad sustava, te pristupati datotekama izvan vlastitog direktorija ili direktorija \texttt{/materijali}.
 
 \begin{primjer}
 	Pozicioniranje u \textit{home} direktorij
@@ -24,10 +20,10 @@ Svaki korisnik na poslužitelju ima svoj direktorij (/home/username, odnosno \te
 	\end{itemize}
 \end{primjer}
 
-\begin{zadatak} U direktoriju \texttt{\textasciitilde}  kreirajte direktorij \texttt{zad1} i u njemu riješite sljedeće zadatke:
+\begin{zadatak} Unutar direktorija \texttt{\textasciitilde} napravite poddirektorij \texttt{zad1} i u njemu riješite sljedeće zadatke:
 	\begin{itemize}
 		\item Ispitajte koji je tekući direktorij.
-		\item Napravite direktorij \textasciitilde \texttt{/zad01/tmp}
+		\item Napravite direktorij \textasciitilde \texttt{/zad1/tmp}
 		\item Promjenite tekući direktorij u novokreirani direktorij.
 		\item u direktoriju \texttt{tmp} napravite datoteke \texttt{prva} \texttt{druga} \texttt{treca}.
 		\item Isprobajte naredbu \texttt{tree} i njen izlaz preusmjerite u datoteku \texttt{treeoutput}
@@ -40,17 +36,17 @@ Svaki korisnik na poslužitelju ima svoj direktorij (/home/username, odnosno \te
 
 
 \begin{zadatak} 
-	U direktoriju \texttt{\textasciitilde} kreirajte direktorij \texttt{zad2} i uđite u njega.
-		\item U direktoriju \texttt{zad02} kreirajte datoteku sa nastavkom \texttt{.txt} u kojoj su zapisane datoteke iz direktorija \texttt{/etc} koje počinju sa slovom \texttt{a}.
+	U direktoriju \texttt{\textasciitilde} napravite direktorij \texttt{zad2} i uđite u njega.
+		\item U direktoriju \texttt{zad2} kreirajte datoteku sa nastavkom \texttt{.txt} u kojoj su zapisane datoteke iz direktorija \texttt{/etc} koje počinju sa slovom \texttt{a}.
 		
 \end{zadatak}
 
 \begin{zadatak}
-	U direktoriju \texttt{\textasciitilde} kreirajte direktorij \texttt{zad3}  i uđite u njega. Datoteku \texttt{/materijali /mjesta} kopirajte u tekući direktorij. Datoteci \texttt{mjesta} dodijelite takva prava da samo vlasnik može čitati sadržaj datoteke.
+	U direktoriju \texttt{\textasciitilde} napravite direktorij \texttt{zad3}  i uđite u njega. Datoteku \texttt{/materijali /mjesta} kopirajte u tekući direktorij. Datoteci \texttt{mjesta} dodijelite takva prava da samo vlasnik može čitati sadržaj datoteke.
 \end{zadatak}
 
 \begin{zadatak}
-	U direktoriju \texttt{\textasciitilde}  kreirajte direktorij \texttt{zad4} i uđite u njega. Datoteku \texttt{/materijali/mjesta} kopirajte u tekući direktorij. Sadržaj datoteke \texttt{mjesta} sortirajte po abecedi i izlaz upišite u datoteku \texttt{mjesta\_sort} 
+	U direktoriju \texttt{\textasciitilde} napravite direktorij \texttt{zad4} i uđite u njega. Datoteku \texttt{/materijali /mjesta} kopirajte u tekući direktorij. Sadržaj datoteke \texttt{mjesta} sortirajte po abecedi i izlaz upišite u datoteku \texttt{mjesta\_sort} 
 \end{zadatak}
 
 \subsection*{Prebacivanje povijesti naredbi na sustav Moodle}
