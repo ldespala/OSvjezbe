@@ -4,3 +4,10 @@
 OSvjezba_standalone.synctex.gz
 *.pdf
 /*.gz
+/OSvjezbe.aux
+/OSvjezbe.log
+/OSvjezbe.out
+/OSvjezbe.pdf
+/OSvjezbe.ptc
+/OSvjezbe.rar
+/OSvjezbe.toc

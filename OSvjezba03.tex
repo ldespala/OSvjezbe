@@ -1,3 +1,5 @@
+\newcommand{\sitosig}[2]{\textcolor{dark-blue}{\texttt{/#1}\texttt{\ ::\ }{\texttt{#2}/}}}
+
 \section{Naredbe za navigaciju datotečnim sustavom}
 U radu s terminalom bitan podatak je tekući direktorij. To je trenutna pozicija u datotečnom sustavu.
 Datotečni sustav ima hijerarhijsku strukturu direktorija. Na vrhu je root direktorij (/), njegova djeca su \texttt{bin}, \texttt{home}, \texttt{sbin}, \texttt{var}, \texttt{proc} itd.
@@ -86,7 +88,7 @@ mv sto gdje
 %\section{Zadaci}
 \begin{zadatak}
 \begin{itemize}
-\item Isprobajte što rade sljedeće naredbe: \textbf{\texttt{cd}}, \textbf{\texttt{ls}}, \textbf{\texttt{mkdir}}, \textbf{\texttt{rmdir}}, \textbf{\texttt{pwd}}?
+\item Isprobajte što rade sljedeće naredbe: \textbf{\texttt{cd}}, \textbf{\texttt{ls}}, \textbf{\texttt{mkdir}}, \textbf{\texttt{rmdir}}, \textbf{\texttt{pwd}}.
 \item Koristeći naredbu \textbf{\texttt{touch}} kreirati novu datoteku.
 \item Sadržaj nekog direktorija ispišite u datoteku \texttt{listing} koristeći preusmjeravanje\textbf{ \texttt{>}}.
 \item Koristeći naredbe \textbf{\texttt{cat}} i \textbf{\texttt{less}} prikazati sadržaj neke datoteke.
@@ -94,24 +96,48 @@ mv sto gdje
 
 \end{zadatak}
 
+\begin{zadatak} \sitosig{myfile}{B20421}
+	\item Napravite praznu datoteku naziva \texttt{myfile}. Rezultat zadatka provjerite provlačenjem datoteke kroz \texttt{sito}.
+\end{zadatak}
+
+\noindent Program \texttt{sito} generira jedinstven potpis datoteke ili direktorija. U nekim od zadataka nalazit će se oznaka datoteke koju treba provjeriti i njen potpis, npr. \sitosig{myfile}{B20421}. Rješenje prethodnog zadatka provjerava se na sljedeći način:
+
+\begin{prototip}
+	sito myfile
+\end{prototip}
+
 \begin{zadatak} Riješite sljedeće zadatke koristeći naredbe \textbf{\texttt{cd}}, \textbf{\texttt{ls}}, \textbf{\texttt{mkdir}}, \textbf{\texttt{rmdir}}, \textbf{\texttt{mv}}, \textbf{\texttt{cp}}, \textbf{\texttt{pwd}}:
+
 \begin{itemize}
 \item Ispitajte koji je tekući direktorij (direktorij u kojem se nalazite). Naredba \texttt{pwd}.
 \item Promjenite tekući direktorij u root (/). Naredba \texttt{cd}.
 \item Ispišite putanju do svog home direktorija. Naredba \texttt{echo \$HOME}.
-\item Prebacite se u svoj home direktorij.
-\item Napravite direktorij \texttt{vjezba3} i prebacite se u njega.
-\item Kreirajte direktorij \texttt{tmp} i u njemu nekoliko datoteka (npr. prva, druga i treca).
-\item Prebacite se u svoj home direktorij pa provjerite učinjeno naredbom \texttt{tree}.
-\item Izlistajte popis datoteka u tekućem direktoriju. Naredba \texttt{ls}.
-\item Ispitajte opcije naredbe \texttt{ls}: \texttt{ls -a, ls -l, ls -d, ls -t, ls .., ls .} i kombinacije npr. \texttt{ls -ltr}.
-\item Kopirajte datoteku \texttt{prva} u direktorij \texttt{vjezba3}. Naredba \texttt{cp}.
-\item Preimenujte datoteku \texttt{prva} u \texttt{prvatmp} koristeći naredbu \texttt{mv}.
-\item Pomaknite datoteku \texttt{druga} u direktorij \texttt{vjezba3} i preimenujte je koristeći samo jednu naredbu \texttt{mv}.
-\item Izlistajte sadržaj direktorija \texttt{tmp} u obrnutom redoslijedu.
-\item Kopirajte direktorij \texttt{tmp} i sve datoteke u njemu u direktorij \texttt{tmp2}. Koristite opciju \texttt{cp -R}.
 \end{itemize}
 \end{zadatak}
+
+\begin{zadatak} \sitosig{7E5AC6}{mydir}
+\begin{itemize} 
+	\item Prebacite se u svoj home direktorij.
+	\item Napravite direktorij \texttt{mydir}  i prebacite se u njega.
+	\item Napravite podirektorij \texttt{tmp} i u njemu datoteku \texttt{prva}. 
+\end{itemize}
+Rješenja zadatka u kojima je potpis napisan u zaglavlju provjeravaju se nakon što su napravljeni svi pojedinačni koraci u zadatku.
+\end{zadatak}
+
+\begin{zadatak}
+Prebacite se u svoj home direktorij.
+\begin{itemize}
+\item Iscrtajte strukturu direktorija naredbom \texttt{tree}.
+\item Izlistajte popis datoteka u tekućem direktoriju. Naredba \texttt{ls}.
+\item Ispitajte opcije naredbe \texttt{ls}: \texttt{ls -a, ls -l, ls -d, ls -t, ls .., ls .} i kombinacije npr. \texttt{ls -ltr}.
+\item Kopirajte datoteku \texttt{myfile} u novi direktorij \texttt{copies}. Naredba \texttt{cp}. \sitosig{EACF7B}{copies}
+\item Napravite novu datoteku \texttt{test} i preimenujte je u \texttt{test.bak} koristeći naredbu \texttt{mv}. \sitosig{8F86AC}{test.bak}
+\item Pomaknite datoteku \texttt{test.bak} u direktorij \texttt{copies}.
+\item Izlistajte sadržaj direktorija \texttt{/usr} u obrnutom redoslijedu.
+\item Kopirajte direktorij \texttt{mydir} i sve datoteke u njemu u direktorij \texttt{mydir2}. Koristite opciju \texttt{cp -R}.
+\end{itemize}
+\end{zadatak}
+
 \section{Putevi \textit{paths}}
 \begin{itemize}
  \item Prikažite svoj \texttt{search path}. Naredba \texttt{echo \$PATH\$} 
@@ -122,16 +148,17 @@ mv sto gdje
 \item Koja je putanja do vašeg \texttt{home} direktorija? Naredba \texttt{echo \~}. 
 \item Idite u \texttt{/var/tmp} direktorij.
 \item Idite u \texttt{/var/spool/anacron} direktorij koristeći samo jednu naredbu. Provjerite koji je vaš tekući direktorij?
-\item Vratite se u direktorij vjezba3.
+\item Vratite se u \textit{home} direktorij.
 \end{itemize}
 
-\section{Direktorij \texttt{/proc} }
-\begin{itemize}
- \item Idite u \texttt{/proc} direktorij.
-\item Koji CPU koristi vaše računalo?
-\item Koliko RAM-a trenutno koristi?
-\item Koliki je \texttt{swap space}?
-\item Koje datotečne sustave poznaje vaš operativni sustav?
-\end{itemize}
+
+% \section{Direktorij \texttt{/proc} }
+% \begin{itemize}
+%  \item Idite u \texttt{/proc} direktorij.
+% \item Koji CPU koristi vaše računalo?
+% \item Koliko RAM-a trenutno koristi?
+% \item Koliki je \texttt{swap space}?
+% \item Koje datotečne sustave poznaje vaš operativni sustav?
+% \end{itemize}
 
 \vfill
